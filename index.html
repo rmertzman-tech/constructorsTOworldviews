@@ -60,11 +60,6 @@
             flex-wrap: wrap;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             justify-content: center;
-            /* Added for smooth hide/show */
-            position: sticky;
-            top: 10px;
-            z-index: 1000;
-            transition: transform 0.3s ease-out;
         }
 
         .nav-btn {
@@ -214,15 +209,6 @@
             font-size: 1.6em;
         }
 
-        .level-number {
-            font-size: 3em;
-            font-weight: 800;
-            opacity: 0.3;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
-
         .timeline-container {
             position: relative;
             padding: 40px 0;
@@ -243,10 +229,6 @@
             position: relative;
             margin-bottom: 50px;
             width: 45%;
-            /* Styles for animation */
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .timeline-item:nth-child(odd) {
@@ -610,127 +592,6 @@
             box-shadow: 0 6px 20px rgba(126, 34, 206, 0.4);
         }
 
-        .interactive-quiz {
-            background: white;
-            border: 3px solid #7e22ce;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 5px 20px rgba(126, 34, 206, 0.2);
-        }
-
-        .quiz-question {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #1e3c72;
-            margin-bottom: 20px;
-        }
-
-        .quiz-options {
-            list-style: none;
-            padding: 0;
-        }
-
-        .quiz-option {
-            background: #f3f4f6;
-            padding: 15px 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .quiz-option:hover {
-            background: #e5e7eb;
-            border-color: #7e22ce;
-        }
-
-        .quiz-option.correct {
-            background: #d1fae5;
-            border-color: #10b981;
-        }
-
-        .quiz-option.incorrect {
-            background: #fee2e2;
-            border-color: #ef4444;
-        }
-
-        .feedback {
-            display: none;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .feedback.show {
-            display: block;
-            animation: fadeIn 0.4s ease-in;
-        }
-
-        .feedback.correct {
-            background: #d1fae5;
-            color: #065f46;
-            border: 2px solid #10b981;
-        }
-
-        .feedback.incorrect {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 2px solid #ef4444;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .level-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-item {
-                width: 90%;
-                margin-left: 10% !important;
-                text-align: left !important;
-                padding-left: 30px !important;
-                padding-right: 0 !important;
-            }
-
-            .timeline-item::before {
-                left: -27px !important;
-            }
-
-            .timeline-line {
-                left: 15px;
-            }
-
-            .nested-circles {
-                height: 400px;
-            }
-
-            .circle {
-                font-size: 0.8em;
-            }
-
-            #circle-philosophical { width: 380px; height: 380px; }
-            #circle-cultural { width: 310px; height: 310px; }
-            #circle-neural { width: 240px; height: 240px; }
-            #circle-bioelectric { width: 170px; height: 170px; }
-            #circle-chemical { width: 110px; height: 110px; }
-            #circle-quantum { width: 60px; height: 60px; }
-
-            nav {
-                flex-direction: column;
-                top: 0; /* Adjust sticky position for mobile */
-            }
-
-            .nav-btn {
-                width: 100%;
-            }
-        }
-
         .resource-card {
             background: white;
             border: 2px solid #e5e7eb;
@@ -786,6 +647,55 @@
             color: #7e22ce;
             margin-top: 0;
         }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .level-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                width: 90%;
+                margin-left: 10% !important;
+                text-align: left !important;
+                padding-left: 30px !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-item::before {
+                left: -27px !important;
+            }
+
+            .timeline-line {
+                left: 15px;
+            }
+
+            .nested-circles {
+                height: 400px;
+            }
+
+            .circle {
+                font-size: 0.8em;
+            }
+
+            #circle-philosophical { width: 380px; height: 380px; }
+            #circle-cultural { width: 310px; height: 310px; }
+            #circle-neural { width: 240px; height: 240px; }
+            #circle-bioelectric { width: 170px; height: 170px; }
+            #circle-chemical { width: 110px; height: 110px; }
+            #circle-quantum { width: 60px; height: 60px; }
+
+            nav {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -805,6 +715,7 @@
             <button class="nav-btn" onclick="showSection('integration')">Integration</button>
         </nav>
 
+        <!-- OVERVIEW SECTION -->
         <div id="overview" class="content-section active">
             <h2>The Grand Narrative: From Quantum Fields to Philosophical Reflection</h2>
             
@@ -886,9 +797,11 @@
                     <li>They're not just learning philosophy—they're developing the <strong>latest stage of cosmic capability evolution</strong></li>
                     <li>Their examined lives participate in <strong>billions of years of information processing development</strong></li>
                     <li>Philosophical practice is a <strong>constructor for building new human capabilities</strong></li>
-                    <li>Their choices matter because they're <strong>steering the next phase ofemergence</strong></li>
-</ul>
-</div><div class="info-box">
+                    <li>Their choices matter because they're <strong>steering the next phase of emergence</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-box">
                 <strong>Pedagogical Approach:</strong> This framework integrates seamlessly with the ABCD capability development model:
                 <ul>
                     <li><strong>Agency (A):</strong> Understanding capability at each scale</li>
@@ -897,902 +810,75 @@
                     <li><strong>Dynamics (D):</strong> Navigating transformation across all levels</li>
                 </ul>
             </div>
-    </div>
-
-    <div id="levels" class="content-section">
-        <h2>The Six Levels of Capability Emergence</h2>
-        
-        <p style="font-size: 1.1em; margin-bottom: 30px;">
-            Each level represents a qualitative leap in capability—new constructors emerge that can perform transformations impossible at lower levels. Yet the same fundamental principles operate at every scale.
-        </p>
-
-        <div class="tabs">
-            <button class="tab active" onclick="showLevelTab('level1-tab')">Level 1: Quantum</button>
-            <button class="tab" onclick="showLevelTab('level2-tab')">Level 2: Chemical</button>
-            <button class="tab" onclick="showLevelTab('level3-tab')">Level 3: Bioelectric</button>
-            <button class="tab" onclick="showLevelTab('level4-tab')">Level 4: Neural</button>
-            <button class="tab" onclick="showLevelTab('level5-tab')">Level 5: Cultural</button>
-            <button class="tab" onclick="showLevelTab('level6-tab')">Level 6: Philosophical</button>
         </div>
 
-        <div id="level1-tab" class="tab-content active">
-            <h3>Level 1: Quantum Information Architecture</h3>
+        <!-- SIX LEVELS SECTION -->
+        <div id="levels" class="content-section">
+            <h2>The Six Levels of Capability Emergence</h2>
             
-            <div class="key-concept">
-                <strong>Scale:</strong> 10⁻³⁵ meters (Planck length) to 10⁻¹⁰ meters (atomic scale)<br>
-                <strong>Time:</strong> 13.8 billion years ago to present<br>
-                <strong>Key Feature:</strong> Information at boundaries, not "inside" systems
-            </div>
-
-            <h4>Chris Fields' Quantum Information Framework</h4>
-            
-            <p><strong>Core Principle:</strong> Information exists at <em>boundaries between systems</em>, not "inside" systems. At the quantum level, particles don't have intrinsic properties—only relational properties defined through measurement.</p>
-
-            <div class="scientist-card">
-                <h5>Key Insights:</h5>
-                <ul>
-                    <li><strong>Observer and observed co-constitute</strong> through interaction—there's no measurement without changing the system</li>
-                    <li><strong>Entanglement creates non-local information networks</strong> where measurement of one particle instantaneously affects correlated particles</li>
-                    <li><strong>Boundary detection is foundational</strong>—even at quantum level, systems distinguish "this" from "not-this"</li>
-                    <li><strong>Information processing begins with simplest distinction</strong>—the quantum bit (qubit) can be in superposition of states</li>
-                </ul>
-            </div>
-
-            <h4>First Capability Emerges</h4>
-            
-            <div class="principle-box">
-                <strong>Maintaining identity through interaction</strong><br>
-                Quantum systems persist through measurement events. This is proto-agency: affecting and being affected while maintaining distinction. A particle that can be measured repeatedly demonstrates the first form of constructor behavior—it can participate in transformations while retaining its capacity to participate again.
-            </div>
-
-            <h4>Information Substrates at Quantum Level</h4>
-            <ul>
-                <li><strong>Quantum states:</strong> Superposition and entanglement store information</li>
-                <li><strong>Phase relationships:</strong> Relative phases encode distinguishable states</li>
-                <li><strong>Measurement outcomes:</strong> Collapse to classical states creates definite information</li>
-            </ul>
-
-            <div class="insight-box">
-                <strong>Why This Matters:</strong> Even at the most fundamental level, there's primitive "agency"—systems "measuring" (interacting with) other systems. The universe isn't dead matter following mindless laws. From the beginning, there's information processing, boundary detection, and proto-intentionality.
-            </div>
-
-            <h4>Teaching Connections</h4>
-            <div class="exploration-activity">
-                <h4>🔬 Thought Experiment: The Double Slit</h4>
-                <ul class="activity-steps">
-                    <li>Discuss how observation changes quantum behavior</li>
-                    <li>Connect to information at boundaries: which-path information vs. interference pattern</li>
-                    <li>Ask: What does it mean that "measurement" creates reality at this level?</li>
-                    <li>Bridge to consciousness: Is observation always physical interaction?</li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="level2-tab" class="tab-content">
-            <h3>Level 2: Constructor Assembly</h3>
-            
-            <div class="key-concept">
-                <strong>Scale:</strong> 10⁻¹⁰ meters (atoms) to 10⁻⁶ meters (large molecules)<br>
-                <strong>Time:</strong> ~13.8 billion years ago (first atoms) to 3.8 billion years ago (origin of life)<br>
-                <strong>Key Feature:</strong> Atoms and molecules as repeatable constructors
-            </div>
-
-            <h4>Deutsch & Marletto's Constructor Theory</h4>
-
-            <p><strong>Core Principle:</strong> Physics is fundamentally about <em>what transformations are possible</em>, not just what laws govern motion.</p>
-
-            <div class="scientist-card">
-                <h5>Key Definitions:</h5>
-                <ul>
-                    <li><strong>Constructor:</strong> Anything capable of causing a transformation repeatably while retaining the ability to cause it again (atoms, enzymes, tools, institutions)</li>
-                    <li><strong>Substrate:</strong> A physical system capable of holding information—existing in distinguishable states that can be copied</li>
-                    <li><strong>Information:</strong> Distinctions that can be reliably copied from one substrate to another</li>
-                    <li><strong>Possible vs. Impossible:</strong> What transformations constructors can vs. cannot perform defines physical law</li>
-                </ul>
-            </div>
-
-            <h4>Examples of Chemical Constructors</h4>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Constructor</th>
-                        <th>Transformation Enabled</th>
-                        <th>Information Substrate</th>
-                        <th>Capability Gained</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Atoms</strong></td>
-                        <td>Chemical bonds</td>
-                        <td>Electron configurations</td>
-                        <td>Molecular assembly</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Enzymes</strong></td>
-                        <td>Catalyze specific reactions</td>
-                        <td>3D protein structure</td>
-                        <td>Metabolic pathways</td>
-                    </tr>
-                    <tr>
-                        <td><strong>DNA</strong></td>
-                        <td>Store genetic information</td>
-                        <td>Base pair sequences</td>
-                        <td>Heredity with error correction</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ribosomes</strong></td>
-                        <td>Build proteins from RNA</td>
-                        <td>RNA sequences</td>
-                        <td>Constructor constructors</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Autocatalytic sets</strong></td>
-                        <td>Self-replication</td>
-                        <td>Network topology</td>
-                        <td>Life's origin</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h4>Critical Transition: Passive to Active</h4>
-
-            <div class="principle-box">
-                <strong>From particles to constructors:</strong><br>
-                At Level 1, quantum fields interact but don't "build" anything persistent. At Level 2, atoms become constructors—they enable new transformations (chemical bonds) while remaining unchanged themselves. This is the first true constructor behavior: <em>enabling transformation while retaining the capacity to enable it again</em>.
-            </div>
-
-            <h4>Origin of Life: Constructor Theory Perspective</h4>
-
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Primordial Soup (~4 billion years ago)</h5>
-                        <p>Simple organic molecules form spontaneously from atmospheric chemistry and energy (lightning, UV, volcanic heat)</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Autocatalytic Networks</h5>
-                        <p>Some molecules catalyze formation of others, creating self-reinforcing chemical cycles—networks that build themselves</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>RNA World (~3.8 billion years ago)</h5>
-                        <p>RNA molecules that can both store information AND catalyze reactions—combining substrate and constructor functions</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>DNA/Protein Division</h5>
-                        <p>DNA specializes as information substrate (stable storage), proteins specialize as constructors (efficient catalysis)</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Error Correction</h5>
-                        <p>Proofreading enzymes emerge that preserve information accuracy—enabling cumulative evolution</p>
-                    </div>
-                </div>
-            </table>
-
-            <div class="insight-box">
-                <strong>Key Insight:</strong> Life didn't require "magic" or violation of physical law. It emerged when molecular constructors became sophisticated enough to build copies of themselves with error correction. This opened a new possibility space: <em>evolution through variation and selection</em>.
-            </div>
-
-            <h4>Teaching Activity</h4>
-            <div class="exploration-activity">
-                <h4>🧪 Constructor Hunt</h4>
-                <ul class="activity-steps">
-                    <li>Have students identify constructors in everyday life (ovens, factories, teachers, laws)</li>
-                    <li>For each, ask: What transformation does it enable? Does it retain capacity to repeat?</li>
-                    <li>Discuss: What new constructors did each enable? (Oven → cooked food → agriculture → civilization)</li>
-                    <li>Connect to capability development: How are you becoming a constructor? What transformations can you enable in others?</li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="level3-tab" class="tab-content">
-            <h3>Level 3: Bioelectric Networks & Multi-Scale Agency</h3>
-            
-            <div class="key-concept">
-                <strong>Scale:</strong> 10⁻⁶ meters (single cells) to 1 meter (organisms)<br>
-                <strong>Time:</strong> 3.8 billion years ago (first cells) to present<br>
-                <strong>Key Feature:</strong> Cognition without brains—multi-scale goal-directed behavior
-            </div>
-
-            <h4>Michael Levin's Revolutionary Framework</h4>
-
-            <p><strong>Core Principle:</strong> Cognition is not unique to brains—it exists at every biological scale from cells to organisms. Agency is <em>multi-scale</em>.</p>
-
-            <div class="scientist-card">
-                <h5>What Cells Can Do (Basal Cognition):</h5>
-                <ul>
-                    <li><strong>Problem-solving:</strong> Navigate mazes, find nutrients, avoid toxins</li>
-                    <li><strong>Memory:</strong> Maintain states influenced by past experience (epigenetics, ion channel expression)</li>
-                    <li><strong>Goal-directedness:</strong> Pursue homeostasis, seek optimal growth conditions</li>
-                    <li><strong>Decision-making:</strong> Choose between alternative behaviors based on context</li>
-                    <li><strong>Learning:</strong> Modify responses based on outcomes and experience</li>
-                </ul>
-            </div>
-
-            <h4>Bioelectric Networks as Cognitive Architecture</h4>
-
-            <p>Cells don't just communicate chemically—they form <strong>electrical networks</strong> that coordinate collective behavior:</p>
-
-            <ul>
-                <li><strong>Voltage potentials:</strong> Cells maintain electrical charge across membranes (information states)</li>
-                <li><strong>Ion channels:</strong> Proteins that control electrical flow between cells</li>
-                <li><strong>Gap junctions:</strong> Direct electrical coupling allowing cells to share voltage</li>
-                <li><strong>Morphogenetic fields:</strong> Large-scale bioelectric patterns that guide development toward target forms</li>
-            </ul>
-
-            <div class="principle-box">
-                <strong>The Revolutionary Insight:</strong><br>
-                Bioelectric patterns aren't just signals—they're <em>memories of target anatomies</em>. When a planarian is cut in half, the bioelectric pattern "remembers" what a complete worm looks like, guiding regeneration even of complex structures like the brain.
-            </div>
-
-            <h4>Multi-Scale Agency: The Core Concept</h4>
-
-            <div class="info-box">
-                <strong>Individual cells have agency:</strong>
-                <ul>
-                    <li>Metabolic goals (maintain ATP, pH, ion balance)</li>
-                    <li>Division/no-division decisions</li>
-                    <li>Gene expression choices</li>
-                </ul>
-                
-                <strong>Cell collectives have emergent agency:</strong>
-                <ul>
-                    <li>Tissue-level goals (form liver, regenerate limb)</li>
-                    <li>Organ-level goals (pump blood, filter toxins)</li>
-                    <li>Organism-level goals (survive, reproduce)</li>
-                </ul>
-                
-                <strong>Key point:</strong> Higher-scale agency emerges from but isn't reducible to lower-scale agency. The organism has goals that individual cells don't "know about."
-            </div>
-
-            <h4>Spectacular Examples</h4>
-
-            <div class="resource-card">
-                <h5>🦎 Planarian Regeneration</h5>
-                <p>Cut a planarian flatworm into dozens of pieces. Each piece regenerates a complete worm—head, tail, organs, brain—in correct proportions.</p>
-                <p><strong>How?</strong> Cells collectively "know" the target morphology through bioelectric patterns. Same cells, different electrical context → different structure.</p>
-                <p><strong>Teaching point:</strong> This is collective problem-solving. No individual cell "knows" the plan, but the network does.</p>
-            </div>
-
-            <div class="resource-card">
-                <h5>🐸 Xenopus Frog Face Experiment</h5>
-                <p>Levin's lab transplanted frog eye tissue to random locations (back, tail, gut). The tissue reorganized to form a proper eye with correct orientation.</p>
-                <p><strong>How?</strong> Cells read local bioelectric context and coordinate to build functional structure—even in "wrong" location.</p>
-                <p><strong>Teaching point:</strong> Cells are cognitive agents, not passive responders to genetic programs.</p>
-            </div>
-
-            <div class="resource-card">
-                <h5>🔬 Two-Headed Worms</h5>
-                <p>By changing bioelectric patterns (blocking certain ion channels), Levin created planarians that stably regenerate two heads instead of head+tail.</p>
-                <p><strong>Shocking part:</strong> Cut these worms again, they STILL regenerate two heads—without any genetic changes!</p>
-                <p><strong>Teaching point:</strong> Information isn't just in genes. Bioelectric patterns are heritable "anatomical memory."</p>
-            </div>
-
-            <h4>Capabilities Emerging at This Level</h4>
-
-            <ol>
-                <li><strong>Collective computation:</strong> Groups solve problems individuals cannot</li>
-                <li><strong>Goal-directed development:</strong> Reach target morphology despite perturbations</li>
-                <li><strong>Regeneration:</strong> Rebuild complex structures from partial information</li>
-                <li><strong>Modularity with integration:</strong> Subsystems pursue local goals while serving organism goals</li>
-                <li><strong>Basal cognition:</strong> Learning, memory, decision-making without neurons</li>
-            </ol>
-
-            <div class="insight-box">
-                <strong>Why This Matters:</strong> If cells are cognitive agents, then "intelligence" isn't something that suddenly appeared with brains. It's been here from the beginning, getting more sophisticated at each level. Your body contains trillions of cognitive agents coordinating their goals with your organism-level goals.
-            </div>
-
-            <h4>Connections to Other Frameworks</h4>
-
-            <div class="principle-grid">
-                <div class="principle-card">
-                    <h4>Constructor Theory</h4>
-                    <p>Multicellular organisms are <strong>higher-order constructors</strong> that enable transformations single cells cannot perform (movement, complex sensing, learning)</p>
-                </div>
-
-                <div class="principle-card">
-                    <h4>Fields' Information Boundaries</h4>
-                    <p><strong>Markov blankets</strong> exist at multiple scales: cell membrane, organ boundary, skin. Each level manages its own self/other distinction.</p>
-                </div>
-
-                <div class="principle-card">
-                    <h4>Future Levels</h4>
-                    <p>This multi-scale agency continues through neural networks (Level 4) and cultural systems (Level 5) to philosophical reflection (Level 6)</p>
-                </div>
-            </div>
-
-            <h4>Teaching Activity</h4>
-            <div class="exploration-activity">
-                <h4>🧠 Multi-Scale Agency Exercise</h4>
-                <ul class="activity-steps">
-                    <li>Have students list their current goals (organism level)</li>
-                    <li>Discuss: What goals do your cells have? (metabolic homeostasis, division timing)</li>
-                    <li>Ask: Do your cells "know" about your goals? Do you know about theirs?</li>
-                    <li>Extend: What groups are you part of? (family, class, nation) What are their goals?</li>
-                    <li>Reflect: How do you coordinate with higher-scale agencies whose goals differ from yours?</li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="level4-tab" class="tab-content">
-            <h3>Level 4: Neural Networks & Predictive Processing</h3>
-            
-            <div class="key-concept">
-                <strong>Scale:</strong> 10⁻³ meters (neurons) to 1 meter (nervous systems)<br>
-                <strong>Time:</strong> ~600 million years ago (first nervous systems) to present<br>
-                <strong>Key Feature:</strong> Internal world models enable prediction and planning
-            </div>
-
-            <h4>From Bioelectric to Neural</h4>
-
-            <p>Neurons are <strong>specialized cells optimized for information processing</strong>—but they work on the same principles as the bioelectric networks from Level 3:</p>
-
-            <ul>
-                <li><strong>Same mechanism:</strong> Voltage changes across membranes</li>
-                <li><strong>Key difference:</strong> Neurons fire action potentials (rapid, all-or-nothing signals) enabling fast long-distance communication</li>
-                <li><strong>Capability gain:</strong> Complex information integration over larger scales and shorter timeframes</li>
-            </ul>
-
-            <h4>Predictive Processing Framework</h4>
-
-            <p><strong>Core principle:</strong> Brains are <em>prediction machines</em> that constantly generate models of what they expect to sense, then compare expectations to reality.</p>
-
-            <div class="scientist-card">
-                <h5>How Predictive Brains Work:</h5>
-                <ol>
-                    <li><strong>Generate predictions:</strong> Based on internal model, brain predicts incoming sensory data</li>
-                    <li><strong>Compare to reality:</strong> Actual sensory input comes in</li>
-                    <li><strong>Calculate prediction error:</strong> Difference between expected and actual</li>
-                    <li><strong>Two options:</strong>
-                        <ul>
-                            <li><em>Update the model</em> (learning/perception)</li>
-                            <li><em>Act to confirm prediction</em> (active inference)</li>
-                        </ul>
-                    </li>
-                </ol>
-            </div>
-
-            <div class="principle-box">
-                <strong>Active Inference:</strong> You don't just passively perceive the world—you act to make your predictions come true. When you expect to see a door handle at a certain height, you reach for that location. If it's not there, you update your model. This makes action and perception two sides of the same coin.
-            </div>
-
-            <h4>Why Internal Models Matter</h4>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Without Internal Models</th>
-                        <th>With Internal Models</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>React to stimuli (stimulus-response)</td>
-                        <td>Anticipate events before they occur</td>
-                    </tr>
-                    <tr>
-                        <td>Trial and error learning only</td>
-                        <td>Mental simulation before acting</td>
-                    </tr>
-                    <tr>
-                        <td>No planning</td>
-                        <td>Multi-step planning toward distant goals</td>
-                    </tr>
-                    <tr>
-                        <td>Can't reason about absent things</td>
-                        <td>Counterfactual reasoning ("what if...")</td>
-                    </tr>
-                    <tr>
-                        <td>No tool use</td>
-                        <td>Tools become part of body schema</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h4>Fields' Perspective: Consciousness as Boundary Management</h4>
-
-            <div class="info-box">
-                <strong>Where Fields and Levin meet neural systems:</strong>
-                <ul>
-                    <li><strong>Consciousness emerges at information boundaries</strong> between organism and environment</li>
-                    <li>Brain doesn't "contain" representations—it <em>manages interactions</em></li>
-                    <li><strong>Self-model</strong> is a boundary management system: tracking what's me vs. not-me</li>
-                    <li><strong>Experience</strong> is information integration at organism/environment boundary</li>
-                    <li>Markov blanket (body boundary) defines what's inside/outside for neural processing</li>
-                </ul>
-            </div>
-
-            <h4>Capabilities Emerging at Neural Level</h4>
-
-            <ol>
-                <li><strong>Model-based agency:</strong> Internal world models enable flexible, context-sensitive behavior</li>
-                <li><strong>Temporal reasoning:</strong> Past → present → future integration</li>
-                <li><strong>Social cognition:</strong> Modeling other agents' goals and beliefs (theory of mind)</li>
-                <li><strong>Abstract reasoning:</strong> Patterns over patterns (mathematical thought, logical inference)</li>
-                <li><strong>Tool construction:</strong> Extending agency through environmental modification</li>
-                <li><strong>Counterfactual simulation:</strong> "What if I had done X instead of Y?"</li>
-            </ol>
-
-            <h4>Tool Use: Body Schema Extension</h4>
-
-            <div class="resource-card">
-                <h5>🔧 The Rubber Hand Illusion</h5>
-                <p>When you see a fake rubber hand being touched while your real hand (hidden from view) is touched synchronously, your brain incorporates the rubber hand into your body schema. You literally feel the fake hand is yours!</p>
-                <p><strong>What this shows:</strong> "Self" is a flexible prediction, not a fixed thing. Your brain predicts where your body is based on sensory correlations.</p>
-                <p><strong>Tool use connection:</strong> Expert tool users (drummers with sticks, drivers with cars) incorporate tools into body schema. The tool becomes part of "me."</p>
-            </div>
-
-            <div class="insight-box">
-                <strong>Teaching Connection:</strong> This shows that consciousness isn't a mysterious "extra" thing added to brains. It's what sophisticated boundary management and prediction <em>feels like from the inside</em>. Experience is the brain's model of its own boundary with the world.
-            </div>
-
-            <h4>From Neural to Cultural</h4>
-
-            <p>Neural systems enable increasingly sophisticated capabilities, but they hit a limit: <strong>knowledge dies with the organism</strong>. Each generation must learn everything anew from experience. The next level (Cultural/Linguistic) solves this by enabling <em>cumulative culture</em>—knowledge that persists across generations.</p>
-
-            <h4>Teaching Activity</h4>
-            <div class="exploration-activity">
-                <h4>🎯 Prediction Error Exercise</h4>
-                <ul class="activity-steps">
-                    <li>Show optical illusions (hollow face, rotating dancer, impossible figures)</li>
-                    <li>Discuss: Why do these "fool" us? (Brain's predictions override sensory input)</li>
-                    <li>Have students close eyes and reach for object—discuss prediction vs. reality</li>
-                    <li>Connect to learning: When predictions fail consistently, we update models (this is learning!)</li>
-                    <li>Extension: How does culture shape our predictions? What do we expect to see/hear based on cultural learning?</li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="level5-tab" class="tab-content">
-            <h3>Level 5: Cultural & Linguistic Constructors</h3>
-            
-            <div class="key-concept">
-                <strong>Scale:</strong> 1 meter (individuals) to 10⁷ meters (global systems)<br>
-                <strong>Time:</strong> ~100,000 years ago (language origins) to present<br>
-                <strong>Key Feature:</strong> Cumulative culture—information persists across generations beyond genetics
-            </div>
-
-            <h4>The Human Transition: Language as Meta-Constructor</h4>
-
-            <p><strong>What makes humans unique?</strong> Not bigger brains (Neanderthals had larger brains). Not tool use (many animals use tools). Not even culture (some animals have culture). The key is <strong>cumulative culture</strong>—each generation building on the previous.</p>
-
-            <div class="principle-box">
-                <strong>Language is a meta-constructor:</strong> It's a constructor that builds other constructors. Language enables us to construct:
-                <ul>
-                    <li><strong>Concepts</strong> (constructors for thoughts)</li>
-                    <li><strong>Stories</strong> (constructors for shared understanding)</li>
-                    <li><strong>Theories</strong> (constructors for predictions)</li>
-                    <li><strong>Institutions</strong> (constructors for coordination)</li>
-                    <li><strong>Technologies</strong> (constructors for environmental transformation)</li>
-                </ul>
-            </div>
-
-            <h4>Key Properties of Linguistic Constructors</h4>
-
-            <div class="principle-grid">
-                <div class="principle-card">
-                    <h4>1. Detachment from Context</h4>
-                    <p>Can discuss past, future, hypothetical, impossible. Can reason about abstract entities (justice, infinity, consciousness). Enables time-travel in imagination.</p>
-                </div>
-
-                <div class="principle-card">
-                    <h4>2. Compositionality</h4>
-                    <p>Finite elements (words) → infinite expressions (sentences). Recursive structure: thoughts about thoughts about thoughts. Systematic complexity building.</p>
-                </div>
-
-                <div class="principle-card">
-                    <h4>3. Cultural Transmission</h4>
-                    <p>Information persists across generations beyond genetics. Ratchet effect: improvements accumulate over time. Collective learning at species level.</p>
-                </div>
-
-                <div class="principle-card">
-                    <h4>4. Distributed Cognition</h4>
-                    <p>Knowledge distributed across people, books, tools, institutions. Individual minds become nodes in cognitive networks. Collective intelligence exceeds any individual.</p>
-                </div>
-            </div>
-
-            <h4>Constructor Theory Perspective on Culture</h4>
-
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Constructor Type</th>
-                        <th>Transformation Enabled</th>
-                        <th>Information Substrate</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Concepts</strong></td>
-                        <td>Organize experience into categories</td>
-                        <td>Linguistic labels + associations</td>
-                        <td>"Justice"—enables reasoning about fairness</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Scientific Methods</strong></td>
-                        <td>Generate reliable knowledge</td>
-                        <td>Experimental protocols + peer review</td>
-                        <td>Double-blind trials construct medical knowledge</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Legal Systems</strong></td>
-                        <td>Construct social order</td>
-                        <td>Laws + precedents + enforcement</td>
-                        <td>Property rights enable market economies</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Educational Institutions</strong></td>
-                        <td>Construct capabilities in next generation</td>
-                        <td>Curricula + pedagogical practices</td>
-                        <td>Universities construct educated professionals</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Democratic Processes</strong></td>
-                        <td>Construct collective decisions</td>
-                        <td>Voting procedures + deliberation norms</td>
-                        <td>Elections construct legitimate governments</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h4>Levin's Multi-Scale Agency at Cultural Level</h4>
-
-            <div class="info-box">
-                <strong>Individual Level:</strong>
-                <ul>
-                    <li>Personal goals, beliefs, capabilities</li>
-                    <li>Agency over own thoughts and actions</li>
-                </ul>
-
-                <strong>Group Level:</strong>
-<ul>
-<li>Families, companies, movements, nations</li>
-<li>Emergent collective goals that differ from individual goals</li>
-<li>Example: Corporation pursues profit even if no individual prioritizes it</li>
-</ul><strong>Institutional Level:</strong>
-                <ul>
-                    <li>Legal systems, scientific communities, religions</li>
-                    <li>Self-perpetuating patterns of coordination</li>
-                    <li>Autonomous agency: Institutions can constrain even their founders</li>
-                </ul>
-            </div>
-
-            <h4>Coordination Challenges at Cultural Scale</h4>
-
-            <div class="resource-card">
-                <h5>⚠️ Scale Mismatch Problems</h5>
-                <p><strong>Tragedy of the Commons:</strong> What's good for individual (overuse shared resource) harms collective (resource depletes)</p>
-                <p><strong>Climate Change:</strong> Short-term individual benefit (cheap energy) vs. long-term collective cost (planetary damage)</p>
-                <p><strong>Solution requires:</strong> Coordinating across scales through compatible capabilities despite different immediate interests</p>
-            </div>
-
-            <h4>Fields' Information Boundaries at Social Scale</h4>
-
-            <div class="scientist-card">
-                <h5>Shared Attention Creates Collective Information Spaces:</h5>
-                <ul>
-                    <li><strong>Common ground:</strong> When group focuses on same thing, creates shared context</li>
-                    <li><strong>Common knowledge:</strong> "Everyone knows that everyone knows X" enables coordination</li>
-                    <li><strong>Collective attention:</strong> Mass media creates synchronized information states across populations</li>
-                </ul>
-
-                <h5>Institutions as Boundary-Management Systems:</h5>
-                <ul>
-                    <li>Define who's inside/outside (citizenship, membership)</li>
-                    <li>Manage information flow (secrets, transparency, propaganda)</li>
-                    <li>Maintain collective identity over time despite member turnover</li>
-                </ul>
-
-                <h5>Culture as Information Substrate:</h5>
-                <ul>
-                    <li>Values, norms, practices persist beyond any individual</li>
-                    <li>Like DNA but transmitted through learning not genes</li>
-                    <li>Enables cultural evolution analogous to biological evolution</li>
-                </ul>
-            </div>
-
-            <h4>Capabilities Emerging at Cultural Level</h4>
-
-            <ol>
-                <li><strong>Cumulative knowledge:</strong> Science builds on science, technology on technology</li>
-                <li><strong>Large-scale coordination:</strong> Cities, nations, global cooperation</li>
-                <li><strong>Technology:</strong> Extending capabilities through tools (fire, writing, computers)</li>
-                <li><strong>Institutional memory:</strong> Preserving information across generations</li>
-                <li><strong>Normative reasoning:</strong> "Should" questions, ethics, justice</li>
-                <li><strong>Meaning-making:</strong> Worldviews, philosophies, religions</li>
-                <li><strong>Abstract mathematics:</strong> Pure reasoning beyond physical experience</li>
-            </ol>
-
-            <h4>The Ratchet Effect: Why Culture Accumulates</h4>
-
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Individual Learning (Animals)</h5>
-                        <p>Each organism learns from experience. Knowledge dies with organism. Next generation starts from scratch.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Social Learning (Some Animals)</h5>
-                        <p>Young learn from observing adults. Culture emerges but doesn't accumulate. Improvements can be lost.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Cumulative Culture (Humans)</h5>
-                        <p>High-fidelity transmission + innovation. Improvements preserved and built upon. Ratchet prevents backsliding.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Written Culture (Last 5,000 years)</h5>
-                        <p>External storage of information. Knowledge persists even if practice stops. Enables complex civilization.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Digital Culture (Last 50 years)</h5>
-                        <p>Instant global access to information. Exponential knowledge growth. New coordination challenges.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="insight-box">
-                <strong>Why This Matters:</strong> You're not starting from scratch. Every capability you develop builds on billions of person-hours of accumulated cultural knowledge. Language itself is a tool built by thousands of generations. You're standing on the shoulders of giants—and adding your own contribution to the tower.
-            </div>
-
-            <h4>Teaching Activity</h4>
-            <div class="exploration-activity">
-                <h4>🏛️ Institutional Constructor Analysis</h4>
-                <ul class="activity-steps">
-                    <li>Choose an institution (university, bank, government, church)</li>
-                    <li>Identify: What transformation does it enable? What's the information substrate?</li>
-                    <li>Analyze: What goals does the institution have? Do these align with individual members' goals?</li>
-                    <li>Trace: How did this institution enable other constructors? What became possible because it exists?</li>
-                    <li>Apply: How could you improve this constructor? What new transformations should it enable?</li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="level6-tab" class="tab-content">
-            <h3>Level 6: Philosophical Self-Understanding</h3>
-            
-            <div class="key-concept">
-                <strong>Scale:</strong> All scales simultaneously (reflects on entire hierarchy)<br>
-                <strong>Time:</strong> ~2,500 years ago (explicit philosophical traditions) to present<br>
-                <strong>Key Feature:</strong> Recursive self-improvement—using capabilities to examine and develop capabilities
-            </div>
-
-            <h4>Philosophy as Ultimate Meta-Constructor</h4>
-
-            <p><strong>What makes philosophy special?</strong> It examines the <em>conditions of possibility</em> for knowledge, action, and meaning. Philosophy is thinking about thinking—the ultimate recursive loop.</p>
-
-            <div class="principle-box">
-                <strong>Philosophy creates:</strong>
-                <ul>
-                    <li><strong>Conceptual tools</strong> (frameworks, distinctions, methods)</li>
-                    <li><strong>Meta-capabilities</strong> (using capabilities to develop capabilities)</li>
-                    <li><strong>Reflexive understanding</strong> (examining conditions of own possibility)</li>
-                    <li><strong>Coordination across difference</strong> (finding common ground despite divergent worldviews)</li>
-                </ul>
-            </div>
-
-            <h4>The ABCD Framework Operates at This Level</h4>
-
-            <div class="level-grid">
-                <div class="level-card">
-                    <h3>Agency (A)</h3>
-                    <p><strong>Understanding your constructor capacity</strong></p>
-                    <ul style="text-align: left;">
-                        <li>What transformations can I actually cause?</li>
-                        <li>What constraints are real vs. perceived?</li>
-                        <li>What requires individual vs. collective capability?</li>
-                        <li>How do I develop new capabilities?</li>
-                    </ul>
-                </div>
-
-                <div class="level-card">
-                    <h3>Beauty/Awe (B)</h3>
-                    <p><strong>Sustaining motivation through scale-transcendence</strong></p>
-                    <ul style="text-align: left;">
-                        <li>What experiences connect me to larger wholes?</li>
-                        <li>How do I maintain commitment across decades?</li>
-                        <li>What restores perspective when overwhelmed?</li>
-                        <li>How do I build sustainable motivational infrastructure?</li>
-                    </ul>
-                </div>
-
-                <div class="level-card">
-                    <h3>Context (C)</h3>
-                    <p><strong>Reading nested systems you're embedded in</strong></p>
-                    <ul style="text-align: left;">
-                        <li>What systems shape my possibilities?</li>
-                        <li>How does power operate invisibly?</li>
-                        <li>What appears natural but is constructed?</li>
-                        <li>What interconnections am I missing?</li>
-                    </ul>
-                </div>
-
-                <div class="level-card">
-                    <h3>Dynamics (D)</h3>
-                    <p><strong>Navigating transformation across scales</strong></p>
-                    <ul style="text-align: left;">
-                        <li>What patterns persist through change?</li>
-                        <li>What feedback loops am I part of?</li>
-                        <li>Where are tipping points?</li>
-                        <li>What requires patience vs. decisive action?</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h4>How ABCD Connects to All Six Levels</h4>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                Each level represents a qualitative leap in capability—new constructors emerge that can perform transformations impossible at lower levels. Yet the same fundamental principles operate at every scale.
+            </p>
 
             <table class="comparison-table">
                 <thead>
                     <tr>
                         <th>Level</th>
-                        <th>Agency</th>
-                        <th>Beauty/Awe</th>
-                        <th>Context</th>
-                        <th>Dynamics</th>
+                        <th>Scale</th>
+                        <th>Key Feature</th>
+                        <th>Information Substrate</th>
+                        <th>Primary Capability</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>1. Quantum</strong></td>
-                        <td>Measurement interactions</td>
-                        <td>Quantum entanglement</td>
-                        <td>Information boundaries</td>
-                        <td>Quantum fluctuations</td>
+                        <td>10⁻³⁵m</td>
+                        <td>Information at boundaries</td>
+                        <td>Quantum states</td>
+                        <td>Maintain identity through interaction</td>
                     </tr>
                     <tr>
                         <td><strong>2. Chemical</strong></td>
-                        <td>Catalytic transformations</td>
-                        <td>Molecular symmetry</td>
-                        <td>Chemical networks</td>
-                        <td>Autocatalytic cycles</td>
+                        <td>10⁻¹⁰m</td>
+                        <td>Constructor assembly</td><td>Molecular bonds</td>
+                        <td>Self-replication with error correction</td>
                     </tr>
                     <tr>
                         <td><strong>3. Bioelectric</strong></td>
-                        <td>Cellular problem-solving</td>
-                        <td>Morphogenetic patterns</td>
-                        <td>Multi-scale organization</td>
-                        <td>Regeneration dynamics</td>
+                        <td>10⁻⁶m to 1m</td>
+                        <td>Bioelectric cognition</td>
+                        <td>Ion gradients</td>
+                        <td>Multi-scale goal-directed problem-solving</td>
                     </tr>
                     <tr>
                         <td><strong>4. Neural</strong></td>
-                        <td>Predictive action</td>
-                        <td>Flow states, wonder</td>
-                        <td>Body-environment boundary</td>
-                        <td>Learning & adaptation</td>
+                        <td>10⁻³m to 1m</td>
+                        <td>Predictive processing</td>
+                        <td>Neural patterns</td>
+                        <td>Model-based planning and tool use</td>
                     </tr>
                     <tr>
                         <td><strong>5. Cultural</strong></td>
-                        <td>Collective coordination</td>
-                        <td>Art, music, ritual</td>
-                        <td>Institutional structures</td>
-                        <td>Cultural evolution</td>
+                        <td>1m to 10⁷m</td>
+                        <td>Symbolic thought</td>
+                        <td>Language/texts</td>
+                        <td>Cumulative knowledge and large-scale coordination</td>
                     </tr>
                     <tr>
                         <td><strong>6. Philosophical</strong></td>
-                        <td>Meta-capability development</td>
-                        <td>Cosmic perspective</td>
-                        <td>Examining all levels</td>
-                        <td>Recursive self-improvement</td>
+                        <td>All scales</td>
+                        <td>Reflexive understanding</td>
+                        <td>Conceptual frameworks</td>
+                        <td>Recursive self-improvement and wisdom</td>
                     </tr>
                 </tbody>
-            </table>
-
-            <h4>Historical Development of Philosophical Capabilities</h4>
-
-            <div class="scientist-card">
-                <h5>Ancient Period (~600 BCE - 400 CE)</h5>
-                <ul>
-                    <li><strong>Socrates:</strong> Systematic questioning reveals false certainty</li>
-                    <li><strong>Plato:</strong> Abstract reasoning about ideal forms</li>
-                    <li><strong>Aristotle:</strong> Logic formalizes valid reasoning</li>
-                    <li><strong>Indian traditions:</strong> Meditation observes consciousness directly</li>
-                    <li><strong>Chinese traditions:</strong> Dao, harmony, role-based ethics</li>
-                </ul>
-            </div>
-
-            <div class="scientist-card">
-                <h5>Modern Period (1600 - 1800)</h5>
-                <ul>
-                    <li><strong>Descartes:</strong> Methodical doubt identifies firm foundations</li>
-                    <li><strong>Bacon:</strong> Empirical method for reliable knowledge</li>
-                    <li><strong>Kant:</strong> Examining conditions of possible experience</li>
-                    <li><strong>Hume:</strong> Skepticism about causation and self</li>
-                </ul>
-            </div>
-
-            <div class="scientist-card">
-                <h5>19th Century (1800 - 1900)</h5>
-                <ul>
-                    <li><strong>Hegel:</strong> Historical consciousness, dialectical development</li>
-                    <li><strong>Marx:</strong> Material conditions shape ideology</li>
-                    <li><strong>Kierkegaard:</strong> Authentic commitment vs. social conformity</li>
-                    <li><strong>Nietzsche:</strong> Questioning inherited values</li>
-                    <li><strong>Mill:</strong> Utility principle for ethics</li>
-                </ul>
-            </div>
-
-            <div class="scientist-card">
-                <h5>20th Century (1900 - 2000)</h5>
-                <ul>
-                    <li><strong>Dewey:</strong> Pragmatic experimentation</li>
-                    <li><strong>Husserl:</strong> Phenomenology—describing experience before theorizing</li>
-                    <li><strong>Wittgenstein:</strong> Language games and context-dependence</li>
-                    <li><strong>Sartre:</strong> Existential freedom and responsibility</li>
-                    <li><strong>Foucault:</strong> Power operates through knowledge</li>
-                </ul>
-            </div>
-
-            <div class="scientist-card">
-                <h5>21st Century (2000 - Present)</h5>
-                <ul>
-                    <li><strong>Systems thinking:</strong> Interconnection and complexity</li>
-                    <li><strong>Capability ethics:</strong> What can people actually do?</li>
-                    <li><strong>Constructor theory:</strong> What transformations are possible?</li>
-                    <li><strong>Multi-scale agency:</strong> Coordination across levels</li>
-                    <li><strong>Your ABCD framework:</strong> Integrative operating system</li>
-                </ul>
-            </div>
-
-            <h4>Why Philosophy is the Latest Frontier (So Far)</h4>
-
-            <div class="quote-box">
-                "Philosophy examines the conditions that make everything else possible—including philosophy itself. It's the only discipline that can examine its own foundations, methods, and purposes. This recursive self-examination is the most sophisticated form of information processing yet evolved."
-            </div>
-
-            <div class="insight-box">
-                <strong>Your Role as Student:</strong> When you practice philosophy, you're not just learning—you're participating in the latest stage of cosmic capability evolution. Your examined life contributes to 13.8 billion years of emergence. Your choices matter because you're helping steer the next phase.
-            </div>
-
-            <h4>Practical Application: Using All Six Levels</h4>
-
-            <div class="exploration-activity">
-                <h4>🌟 Multi-Level Problem Analysis</h4>
-                <p>Take any major challenge (climate change, AI alignment, personal growth) and analyze at all six levels:</p>
-                <ol class="activity-steps">
-                    <li><strong>Quantum/Physical:</strong> What are the physical constraints and possibilities?</li>
-                    <li><strong>Chemical/Material:</strong> What material resources and transformations are involved?</li>
-                    <li><strong>Bioelectric/Biological:</strong> What living systems are affected? What are their goals?</li>
-                    <li><strong>Neural/Cognitive:</strong> What mental models and predictions shape behavior?</li>
-                    <li><strong>Cultural/Social:</strong> What institutions and norms enable or constrain action?</li>
-                    <li><strong>Philosophical/Reflexive:</strong> What are the deep assumptions? What capabilities need development?</li>
-                </ol>
-                <p><strong>Synthesis:</strong> How do interventions at one level affect others? Where are the leverage points?</p>
-            </div>
-
-            <h4>The Meta-Question</h4>
-
-            <div class="principle-box">
-                <strong>Why does capability keep emerging?</strong>
-                <ul>
-                    <li><strong>Physics:</strong> New constructors enable previously impossible transformations</li>
-                    <li><strong>Information:</strong> Better boundary management enables better predictions</li>
-                    <li><strong>Biology:</strong> Multi-scale coordination solves problems single scale cannot</li>
-                    <li><strong>Philosophy:</strong> Examining capabilities enables developing new capabilities</li>
-                </ul>
-                <p><strong>Synthesis:</strong> Reality seems to favor increasing capability. Each new level enables building the next level. No physical limit to this process has been discovered yet.</p>
-            </div>
+            </table><div class="insight-box">
+            <strong>Teaching Tip:</strong> Use this table as a reference throughout the course. Have students identify which level they're analyzing when discussing any phenomenon.
         </div>
     </div>
 
+    <!-- KEY SCIENTISTS SECTION -->
     <div id="scientists" class="content-section">
         <h2>Key Scientists & Their Contributions</h2>
 
@@ -1928,6 +1014,7 @@
         </div>
     </div>
 
+    <!-- UNIVERSAL PRINCIPLES SECTION -->
     <div id="principles" class="content-section">
         <h2>Five Universal Principles Across All Levels</h2>
 
@@ -2006,17 +1093,6 @@
             <div class="key-concept">
                 <strong>Implication:</strong> You are simultaneously an agent AND contain trillions of agents AND participate in larger agencies. Understanding this helps navigate coordination challenges—your cells don't know your life goals, and you don't know society's trajectory, but all must coordinate.
             </div>
-
-            <div class="exploration-activity">
-                <h4>💡 Scale Mismatch Exercise</h4>
-                <p>Identify a problem where different scales have conflicting goals:</p>
-                <ul class="activity-steps">
-                    <li>Individual: Wants convenience (drive car)</li>
-                    <li>Collective: Needs sustainability (reduce emissions)</li>
-                    <li>Challenge: How to coordinate without coercion?</li>
-                    <li>Solution space: Compatible capabilities (make sustainable option convenient)</li>
-                </ul>
-            </div>
         </div>
 
         <div class="principle-card" style="border: 3px solid #10b981;">
@@ -2024,50 +1100,17 @@
             <p><strong>Core Insight:</strong> Each level creates tools that enable the next level. New constructors open new possibility spaces. Evolution of capability is path-dependent.</p>
 
             <h4>Constructor Chain:</h4>
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                <div class="timeline-item"><div class="timeline-content">
-                        <h5>Atoms → Molecules</h5>
-                        <p>Atoms as constructors enable chemical bonds → Molecules become possible</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Molecules → Autocatalysis</h5>
-                        <p>Catalytic molecules enable self-replication → Life becomes possible</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>DNA → Complex Organisms</h5>
-                        <p>Reliable information storage enables evolution → Multicellular life becomes possible</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Nervous Systems → Planning</h5>
-                        <p>Internal models enable simulation → Flexible behavior becomes possible</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Language → Cumulative Culture</h5>
-                        <p>Symbolic communication enables knowledge transmission → Civilization becomes possible</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Writing → Complex Institutions</h5>
-                        <p>External memory enables large-scale coordination → Empires, science become possible</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h5>Philosophy → Recursive Self-Improvement</h5>
-                        <p>Meta-capability development enables examining conditions of thought → Wisdom becomes possible</p>
-                    </div>
-                </div>
-            </div><div class="key-concept">
+            <ul>
+                <li><strong>Atoms → Molecules:</strong> Atoms as constructors enable chemical bonds</li>
+                <li><strong>Molecules → Autocatalysis:</strong> Catalytic molecules enable self-replication</li>
+                <li><strong>DNA → Complex Organisms:</strong> Reliable information storage enables evolution</li>
+                <li><strong>Nervous Systems → Planning:</strong> Internal models enable simulation</li>
+                <li><strong>Language → Cumulative Culture:</strong> Symbolic communication enables knowledge transmission</li>
+                <li><strong>Writing → Complex Institutions:</strong> External memory enables large-scale coordination</li>
+                <li><strong>Philosophy → Recursive Self-Improvement:</strong> Meta-capability development enables examining conditions of thought</li>
+            </ul>
+
+            <div class="key-concept">
                 <strong>Implication:</strong> You inherit billions of years of constructor accumulation. Every tool you use—language, mathematics, scientific method, democratic processes—is a constructor built by previous generations. Your job is to use them well and build new ones for the next generation.
             </div>
         </div>
@@ -2084,16 +1127,6 @@
                 <li><strong>Cultural:</strong> Scientific method improves how we generate knowledge about generating knowledge</li>
                 <li><strong>Philosophical:</strong> Epistemology examines how we know what we know—including epistemology itself</li>
             </ul>
-
-            <div class="info-box">
-                <strong>The ABCD Framework is Recursive:</strong>
-                <ul>
-                    <li>Using <strong>Agency</strong> to develop agency (meta-capability)</li>
-                    <li>Using <strong>Beauty/Awe</strong> experiences to build sustainable motivation infrastructure</li>
-                    <li>Using <strong>Context</strong> reading to understand how context shapes context-reading</li>
-                    <li>Using <strong>Dynamics</strong> navigation to understand how change changes</li>
-                </ul>
-            </div>
 
             <div class="key-concept">
                 <strong>Implication:</strong> There's no obvious upper limit to this process. As long as you can use current capabilities to develop new capabilities, growth can continue. This is why philosophical practice never "finishes"—it's an infinite game.
@@ -2116,31 +1149,8 @@
                 <p>Buyers want goods cheaply; sellers want high prices. Incompatible goals! But both have compatible capability: trading at mutually acceptable price. Markets coordinate millions despite conflicting individual interests.</p>
             </div>
 
-            <div class="scientist-card">
-                <h5>Cultural Level: Mandela's Coalition</h5>
-                <p>Christians, Marxists, liberals, African nationalists had incompatible ultimate values (Kingdom of God vs. workers' paradise vs. liberal democracy vs. African sovereignty). But all had compatible capabilities: resisting apartheid, negotiating peacefully, building democratic institutions.</p>
-            </div>
-
-            <div class="scientist-card">
-                <h5>Cultural Level: Maathai's Green Belt Movement</h5>
-                <p>Traditional values ("ancestors demand we care for land"), Christian stewardship ("God made me steward"), feminist empowerment ("women need economic independence"), scientific conservation ("prevent desertification")—all different ultimate justifications, but compatible capability: planting trees.</p>
-            </div>
-
             <div class="key-concept">
                 <strong>Implication:</strong> You don't need to resolve metaphysical disagreements to coordinate effectively. Focus on compatible capabilities for shared practices. This is how diverse groups accomplish systemic transformation despite value pluralism.
-            </div>
-
-            <div class="exploration-activity">
-                <h4>🤝 Compatible Capability Design</h4>
-                <p>For any coordination challenge:</p>
-                <ul class="activity-steps">
-                    <li>List the different groups/agents involved</li>
-                    <li>Identify their different ultimate values/goals</li>
-                    <li>Don't try to resolve value conflicts!</li>
-                    <li>Instead: Design a practice/institution that all can participate in</li>
-                    <li>Each pursues it for their own reasons</li>
-                    <li>Compatible capabilities enable coordination despite difference</li>
-                </ul>
             </div>
         </div>
 
@@ -2149,6 +1159,7 @@
         </div>
     </div>
 
+    <!-- COSMIC TIMELINE SECTION -->
     <div id="timeline" class="content-section">
         <h2>Cosmic Timeline: 13.8 Billion Years of Capability Emergence</h2>
 
@@ -2170,15 +1181,6 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h5>13.8 BYA - 380,000 Years: Cosmic Dark Age</h5>
-                    <p><strong>Level:</strong> Quantum (Level 1)</p>
-                    <p><strong>Event:</strong> Quarks combine into protons/neutrons. Too hot for atoms to form yet.</p>
-                    <p><strong>Capability:</strong> Particles as proto-constructors, quantum entanglement networks</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
                     <h5>380,000 Years After Big Bang: Recombination</h5>
                     <p><strong>Level:</strong> Quantum → Chemical (Level 1 → 2)</p>
                     <p><strong>Event:</strong> Universe cools enough for electrons to bind to nuclei. First atoms form!</p>
@@ -2188,7 +1190,7 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h5>200 Million Years After Big Bang: First Stars</h5>
+                    <h5>200 Million Years: First Stars</h5>
                     <p><strong>Level:</strong> Chemical (Level 2)</p>
                     <p><strong>Event:</strong> Gravity collapses hydrogen clouds. Nuclear fusion begins.</p>
                     <p><strong>Capability:</strong> Stars as constructors building heavier elements (carbon, oxygen, nitrogen)</p>
@@ -2200,7 +1202,7 @@
                     <h5>9 Billion Years Ago: Solar System Forms</h5>
                     <p><strong>Level:</strong> Chemical (Level 2)</p>
                     <p><strong>Event:</strong> Previous star explodes (supernova). Debris coalesces into Sun and planets.</p>
-                    <p><strong>Capability:</strong> Complex chemistry possible on Earth surface (water, atmosphere, minerals)</p>
+                    <p><strong>Capability:</strong> Complex chemistry possible on Earth surface</p>
                 </div>
             </div>
 
@@ -2208,35 +1210,8 @@
                 <div class="timeline-content">
                     <h5>3.8 Billion Years Ago: Origin of Life</h5>
                     <p><strong>Level:</strong> Chemical → Bioelectric (Level 2 → 3)</p>
-                    <p><strong>Event:</strong> Self-replicating molecules (RNA?) emerge. First cells with membranes.</p>
+                    <p><strong>Event:</strong> Self-replicating molecules emerge. First cells with membranes.</p>
                     <p><strong>Capability:</strong> Metabolism, heredity with variation, evolution through selection</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>2.4 Billion Years Ago: Great Oxygenation</h5>
-                    <p><strong>Level:</strong> Bioelectric (Level 3)</p>
-                    <p><strong>Event:</strong> Cyanobacteria evolve photosynthesis. Oxygen accumulates in atmosphere.</p>
-                    <p><strong>Capability:</strong> Aerobic respiration enables much more energy → complexity possible</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>1.5 Billion Years Ago: Eukaryotic Cells</h5>
-                    <p><strong>Level:</strong> Bioelectric (Level 3)</p>
-                    <p><strong>Event:</strong> Bacteria merge through endosymbiosis. Mitochondria, chloroplasts become organelles.</p>
-                    <p><strong>Capability:</strong> Complex internal organization, specialized structures, sexual reproduction</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>600 Million Years Ago: Multicellular Life Explosion</h5>
-                    <p><strong>Level:</strong> Bioelectric (Level 3)</p>
-                    <p><strong>Event:</strong> Cambrian explosion—sudden diversification of complex body plans.</p>
-                    <p><strong>Capability:</strong> Bioelectric coordination enables large organisms, specialized tissues</p>
                 </div>
             </div>
 
@@ -2251,73 +1226,10 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h5>500 Million Years Ago: Fish with Brains</h5>
-                    <p><strong>Level:</strong> Neural (Level 4)</p>
-                    <p><strong>Event:</strong> Centralized nervous systems—early vertebrate brains.</p>
-                    <p><strong>Capability:</strong> Internal models of environment, learning, memory</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>200 Million Years Ago: Mammals</h5>
-                    <p><strong>Level:</strong> Neural (Level 4)</p>
-                    <p><strong>Event:</strong> Warm-blooded animals with enlarged brains.</p>
-                    <p><strong>Capability:</strong> Sophisticated social behavior, parental care, emotional bonding</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>6 Million Years Ago: Human-Chimp Split</h5>
-                    <p><strong>Level:</strong> Neural (Level 4)</p>
-                    <p><strong>Event:</strong> Lineage leading to humans diverges from other great apes.</p>
-                    <p><strong>Capability:</strong> Larger brains, bipedalism, tool use expanding</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>2 Million Years Ago: Homo Erectus</h5>
-                    <p><strong>Level:</strong> Neural (Level 4)</p>
-                    <p><strong>Event:</strong> Controlled fire, complex tools, migration out of Africa.</p>
-                    <p><strong>Capability:</strong> Cooking (external metabolism), sophisticated tool construction</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>300,000 Years Ago: Homo Sapiens</h5>
-                    <p><strong>Level:</strong> Neural (Level 4)</p>
-                    <p><strong>Event:</strong> Anatomically modern humans emerge in Africa.</p>
-                    <p><strong>Capability:</strong> Larger prefrontal cortex, more sophisticated tool use</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
                     <h5>100,000 - 50,000 Years Ago: Language Emergence</h5>
                     <p><strong>Level:</strong> Neural → Cultural (Level 4 → 5)</p>
                     <p><strong>Event:</strong> Symbolic communication, complex grammar develop.</p>
                     <p><strong>Capability:</strong> Cultural transmission, cumulative learning, abstract thought</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>50,000 Years Ago: Cultural Revolution</h5>
-                    <p><strong>Level:</strong> Cultural (Level 5)</p>
-                    <p><strong>Event:</strong> Art, music, complex tools, burial practices, trade networks.</p>
-                    <p><strong>Capability:</strong> Symbolic thinking, cultural identity, meaning-making</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>12,000 Years Ago: Agricultural Revolution</h5>
-                    <p><strong>Level:</strong> Cultural (Level 5)</p>
-                    <p><strong>Event:</strong> Domestication of plants and animals. Permanent settlements.</p>
-                    <p><strong>Capability:</strong> Food surplus, specialization, population growth, civilization</p>
                 </div>
             </div>
 
@@ -2350,27 +1262,9 @@
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h5>200 Years Ago: Industrial Revolution</h5>
+                    <h5>Present Day: Integrative Understanding</h5>
                     <p><strong>Level:</strong> Philosophical (Level 6)</p>
-                    <p><strong>Event:</strong> Fossil fuels, mechanization, mass production.</p>
-                    <p><strong>Capability:</strong> Energy abundance, material transformation at scale</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>75 Years Ago: Digital Revolution</h5>
-                    <p><strong>Level:</strong> Philosophical (Level 6)</p>
-                    <p><strong>Event:</strong> Computers, internet, information technology.</p>
-                    <p><strong>Capability:</strong> Instant global communication, exponential knowledge growth</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h5>Present Day: Capability Ethics & Multi-Scale Understanding</h5>
-                    <p><strong>Level:</strong> Philosophical (Level 6)</p>
-                    <p><strong>Event:</strong> Integrative frameworks (Fields, Levin, Deutsch/Marletto, ABCD)</p>
+                    <p><strong>Event:</strong> Frameworks like Fields, Levin, Deutsch/Marletto emerge</p>
                     <p><strong>Capability:</strong> Understanding emergence itself, recursive self-improvement</p>
                 </div>
             </div>
@@ -2380,7 +1274,7 @@
                     <h5>Future: Level 7?</h5>
                     <p><strong>Level:</strong> ???</p>
                     <p><strong>Event:</strong> What comes after philosophical self-understanding?</p>
-                    <p><strong>Capability:</strong> Collective intelligence? AI symbiosis? Post-biological evolution? You help decide!</p>
+                    <p><strong>Capability:</strong> You help decide!</p>
                 </div>
             </div>
         </div>
@@ -2388,403 +1282,84 @@
         <div class="quote-box">
             "You are not separate from this timeline—you ARE this timeline becoming aware of itself. Every atom in your body was forged in stars. Every capability you possess accumulated over billions of years. Your philosophical reflection is the universe examining its own nature."
         </div>
-
-        <div class="insight-box">
-            <strong>Teaching Point:</strong> When students feel overwhelmed or discouraged, remind them: The universe spent 13.8 billion years preparing for this moment. Your ability to read this, to question, to wonder—that's the most sophisticated information processing yet achieved. You're not "just" a student. You're the leading edge of cosmic capability evolution.
-        </div>
     </div>
 
+    <!-- TEACHING ACTIVITIES SECTION -->
     <div id="activities" class="content-section">
-        <h2>Teaching Activities & Assessment Tools</h2>
+        <h2>Teaching Activities & Exercises</h2>
 
         <p style="font-size: 1.1em; margin-bottom: 30px;">
             These activities help students internalize the framework through active engagement. Each connects abstract principles to lived experience.
         </p>
 
-        <div class="tabs">
-            <button class="tab active" onclick="showActivityTab('intro-activities')">Introduction Activities</button>
-            <button class="tab" onclick="showActivityTab('level-activities')">Level-Specific Activities</button>
-            <button class="tab" onclick="showActivityTab('integration-activities')">Integration Exercises</button>
-            <button class="tab" onclick="showActivityTab('assessments')">Assessments</button>
+        <div class="exploration-activity">
+            <h4>Activity 1: Your Multi-Scale Nature (30 minutes)</h4>
+            <p><strong>Goal:</strong> Help students viscerally understand they exist at multiple scales simultaneously.</p>
+            
+            <h5>Instructions:</h5>
+            <ol class="activity-steps">
+                <li><strong>Individual Reflection (5 min):</strong> "List 3 goals you have right now."</li>
+                <li><strong>Zoom Out (5 min):</strong> "Your body contains 37 trillion cells. What goals do they have?"</li>
+                <li><strong>Zoom Out More (5 min):</strong> "You're part of larger groups. What goals do they have?"</li>
+                <li><strong>Discussion (10 min):</strong> "Do your cells know about your goals? How do these levels coordinate?"</li>
+                <li><strong>Connection (5 min):</strong> "This is multi-scale agency. Same principle from cells to societies."</li>
+            </ol>
         </div>
 
-        <div id="intro-activities" class="tab-content active">
-            <h3>Activities for Introducing the Framework</h3>
-
-            <div class="exploration-activity">
-                <h4>Activity 1: Your Multi-Scale Nature (30 minutes)</h4>
-                <p><strong>Goal:</strong> Help students viscerally understand they exist at multiple scales simultaneously.</p>
-                
-                <h5>Instructions:</h5>
-                <ol class="activity-steps">
-                    <li><strong>Individual Reflection (5 min):</strong> "List 3 goals you have right now."</li>
-                    <li><strong>Zoom Out (5 min):</strong> "Your body contains 37 trillion cells. What goals do they have? (Hint: metabolism, division timing, protein synthesis)"</li>
-                    <li><strong>Zoom Out More (5 min):</strong> "You're part of larger groups (family, nation, species). What goals do they have?"</li>
-                    <li><strong>Discussion (10 min):</strong> "Do your cells know about your goals? Do you know about your nation's goals? How do these levels coordinate?"</li>
-                    <li><strong>Connection (5 min):</strong> "This is multi-scale agency. Same principle from cells to societies. You're simultaneously an agent, contain agents, and participate in larger agencies."</li>
-                </ol>
-
-                <h5>Follow-up Questions:</h5>
-                <ul>
-                    <li>When do goals at different scales conflict? (Cell wants to divide → cancer vs. organism survival)</li>
-                    <li>How does coordination happen despite lack of communication between scales?</li>
-                    <li>Where do YOU fit in this hierarchy? What level are you most aware of?</li>
-                </ul>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Activity 2: Constructor Hunt (45 minutes)</h4>
-                <p><strong>Goal:</strong> Make constructor theory concrete by identifying constructors everywhere.</p>
-                
-                <h5>Instructions:</h5>
-                <ol class="activity-steps">
-                    <li><strong>Define (5 min):</strong> "Constructor = anything that causes transformations repeatably while retaining capacity to cause them again"</li>
-                    <li><strong>Physical Examples (10 min):</strong> Small groups identify constructors in classroom (oven, whiteboard, pencil, light switch). For each: What transformation? What's preserved?</li>
-                    <li><strong>Social Examples (10 min):</strong> Identify social constructors (teacher, law, money, language). What transformations do they enable?</li>
-                    <li><strong>Meta-Level (10 min):</strong> "What constructors enabled the constructors you identified?" (Schools construct teachers, legislatures construct laws, etc.)</li>
-                    <li><strong>Personal (10 min):</strong> "How are YOU becoming a constructor? What transformations will you be able to cause? What do you need to develop?"</li>
-                </ol>
-
-                <h5>Key Insight to Emphasize:</h5>
-                <p>Constructors at each level enable constructors at the next level. This is how capability accumulates over billions of years—each generation builds on previous.</p>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Activity 3: Information Boundaries Exercise (30 minutes)</h4>
-                <p><strong>Goal:</strong> Make Fields' abstract concept visceral through direct experience.</p>
-                
-                <h5>Instructions:</h5>
-                <ol class="activity-steps">
-                    <li><strong>Sensory Boundary (10 min):</strong> Close eyes. Notice: Where does "you" end and "not-you" begin? Skin? Sensations? Attention? "You" is maintained by active boundary management, not a fixed thing.</li>
-                    <li><strong>Social Boundary (10 min):</strong> Pair up. One person shares opinion. Other responds. Notice: meaning doesn't exist "in" words—it emerges at boundary between speaker/listener through interpretation.</li>
-                    <li><strong>Cultural Boundary (10 min):</strong> Show same image to class. Discuss different interpretations. Information isn't "in" image—it's created at boundary between image and culturally-situated observer.</li>
-                </ol>
-
-                <h5>Discussion Questions:</h5>
-                <ul>
-                    <li>If information is always at boundaries, what does this mean for "objective truth"?</li>
-                    <li>How does changing context (physical, social, cultural) change what information emerges?</li>
-                    <li>Connect to quantum: measurement creates information at detector-particle boundary. Same principle!</li>
-                </ul>
-            </div>
+        <div class="exploration-activity">
+            <h4>Activity 2: Constructor Hunt (45 minutes)</h4>
+            <p><strong>Goal:</strong> Make constructor theory concrete by identifying constructors everywhere.</p>
+            
+            <h5>Instructions:</h5>
+            <ol class="activity-steps">
+                <li><strong>Define (5 min):</strong> "Constructor = causes transformations repeatably while retaining capacity"</li>
+                <li><strong>Physical Examples (10 min):</strong> Identify constructors in classroom. What transformation? What's preserved?</li>
+                <li><strong>Social Examples (10 min):</strong> Identify social constructors. What transformations do they enable?</li>
+                <li><strong>Meta-Level (10 min):</strong> "What constructors enabled the constructors you identified?"</li>
+                <li><strong>Personal (10 min):</strong> "How are YOU becoming a constructor?"</li>
+            </ol>
         </div>
 
-        <div id="level-activities" class="tab-content">
-            <h3>Deep-Dive Activities for Each Level</h3>
-
-            <div class="exploration-activity">
-                <h4>Level 1-2: Quantum & Chemical (45 minutes)</h4>
-                <p><strong>Activity: Double-Slit Simulation & Discussion</strong></p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Watch (10 min):</strong> Dr. Quantum double-slit experiment animation (YouTube)</li>
-                    <li><strong>Discuss (15 min):</strong> How does observation change reality? What does "measurement" mean at quantum level?</li>
-                    <li><strong>Connect to Information (10 min):</strong> Which-path information vs. interference pattern. Information created at boundaries.</li>
-                    <li><strong>Scale Up (10 min):</strong> How is this like consciousness? You "collapse" possibilities when you pay attention. Same principle at different scale!</li>
-                </ol>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Level 3: Bioelectric Networks (60 minutes)</h4>
-                <p><strong>Activity: Planarian Regeneration Analysis</strong></p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Watch (15 min):</strong> Michael Levin lab videos of planarian regeneration</li>
-                    <li><strong>Analyze (20 min):</strong> Small groups answer: How do cells "know" what to build? Where is the "blueprint" stored? (Not just DNA—bioelectric patterns!)</li>
-                    <li><strong>Design Challenge (15 min):</strong> "You're a cell in a regenerating fragment. You don't know if you're in head-piece or tail-piece. How do you figure it out?" (Read bioelectric context!)</li>
-                    <li><strong>Connect to Cognition (10 min):</strong> This is problem-solving without brains. Collective intelligence. Same will happen at social level!</li>
-                </ol>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Level 4: Neural Systems (45 minutes)</h4>
-                <p><strong>Activity: Prediction Error Lab</strong></p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Optical Illusions (15 min):</strong> Show hollow face, impossible figures, etc. Discuss: brain's predictions override sensory input</li>
-                    <li><strong>Rubber Hand Illusion (15 min):</strong> If possible, demonstrate. Or show video. Body schema is flexible prediction!</li>
-                    <li><strong>Reflection (10 min):</strong> "What you experience isn't reality—it's your brain's best prediction of reality. When predictions fail, you learn."</li>
-                    <li><strong>Application (5 min):</strong> How does culture shape predictions? What do you expect to see/hear based on your background?</li>
-                </ol>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Level 5: Cultural Constructors (60 minutes)</h4>
-                <p><strong>Activity: Institutional Constructor Analysis</strong></p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Choose Institution (10 min):</strong> Groups pick: university, bank, government, hospital, etc.</li>
-                    <li><strong>Analyze as Constructor (20 min):</strong>
-                        <ul>
-                            <li>What transformation does it enable?</li>
-                            <li>What's the information substrate? (degrees, money, laws, medical records)</li>
-                            <li>What goals does institution have? (May differ from individuals'!)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Trace Impacts (15 min):</strong> What other constructors did this enable? What became possible because this exists?</li>
-                    <li><strong>Redesign (15 min):</strong> How could you improve this constructor? What new transformations should it enable?</li>
-                </ol>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Level 6: Philosophical Reflection (45 minutes)</h4>
-                <p><strong>Activity: ABCD Self-Assessment</strong></p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Agency (10 min):</strong> "What can you actually do? What constraints are real vs. perceived?"</li>
-                    <li><strong>Beauty/Awe (10 min):</strong> "When did you last experience genuine awe? What sustains your motivation across years?"</li>
-                    <li><strong>Context (10 min):</strong> "What systems shape your possibilities? What appears natural but is constructed?"</li>
-                    <li><strong>Dynamics (10 min):</strong> "What patterns do you notice in your life? What feedback loops are you part of?"</li>
-                    <li><strong>Integration (5 min):</strong> "This is Level 6—using thinking to examine thinking. You just practiced philosophy!"</li>
-                </ol>
-            </div>
+        <div class="exploration-activity">
+            <h4>Activity 3: Trace One Principle Across All Scales (60 minutes)</h4>
+            <p><strong>Goal:</strong> Show how the same principle operates from quantum to philosophical level.</p>
+            
+            <h5>Example: Information at Boundaries</h5>
+            <ol class="activity-steps">
+                <li><strong>Level 1 - Quantum:</strong> Measurement creates information at detector-particle boundary</li>
+                <li><strong>Level 2 - Chemical:</strong> Chemical information at reaction interfaces</li>
+                <li><strong>Level 3 - Bioelectric:</strong> Cell membrane as information boundary</li>
+                <li><strong>Level 4 - Neural:</strong> Sensory organs as information boundaries</li>
+                <li><strong>Level 5 - Cultural:</strong> Meaning at speaker-listener boundary</li>
+                <li><strong>Level 6 - Philosophical:</strong> Self-reflection creates meta-level boundary</li>
+                <li><strong>Synthesis:</strong> Same principle, different scales!</li>
+            </ol>
         </div>
 
-        <div id="integration-activities"class="tab-content">
-<h3>Activities Connecting All Levels</h3><div class="exploration-activity">
-                <h4>Integration Activity 1: Trace One Principle Across All Scales (60 minutes)</h4>
-                <p><strong>Goal:</strong> Show how the same principle operates from quantum to philosophical level.</p>
-                
-                <h5>Example: Information at Boundaries</h5>
-                <ol class="activity-steps">
-                    <li><strong>Level 1 - Quantum (5 min):</strong> Measurement creates information at detector-particle boundary. No information "in" particle until measured.</li>
-                    <li><strong>Level 2 - Chemical (5 min):</strong> Chemical information at reaction interfaces. Bonding possibilities determined by electron configuration boundaries.</li>
-                    <li><strong>Level 3 - Bioelectric (10 min):</strong> Cell membrane as information boundary. Inside/outside distinction creates cellular agency.</li>
-                    <li><strong>Level 4 - Neural (10 min):</strong> Sensory organs as information boundaries. Experience emerges at organism-environment interface.</li>
-                    <li><strong>Level 5 - Cultural (10 min):</strong> Meaning at speaker-listener boundary. Institutions as boundary-management systems (defining membership).</li>
-                    <li><strong>Level 6 - Philosophical (10 min):</strong> Self-reflection creates meta-level boundary. Philosophy examines boundaries between knower and known.</li>
-                    <li><strong>Synthesis (10 min):</strong> Same principle, different scales. Once you see it, you can't unsee it!</li>
-                </ol>
-
-                <h5>Alternative Principles to Trace:</h5>
-                <ul>
-                    <li>Multi-scale agency (quantum "choices" → cellular goals → cultural institutions)</li>
-                    <li>Constructor enabling constructor (atoms → molecules → cells → tools → institutions)</li>
-                    <li>Recursive self-improvement (DNA proofreading → learning → meta-cognition → philosophy)</li>
-                </ul>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Integration Activity 2: Your Place in Cosmic Hierarchy (45 minutes)</h4>
-                <p><strong>Goal:</strong> Personal integration—where do YOU fit in this 13.8 billion year trajectory?</p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Meditation (10 min):</strong> Guided visualization moving through scales:
-                        <ul>
-                            <li>"You are quantum fields maintaining coherence..."</li>
-                            <li>"You are atoms bonded into molecules..."</li>
-                            <li>"You are trillions of cells coordinating..."</li>
-                            <li>"You are neural predictions managing boundaries..."</li>
-                            <li>"You are cultural patterns persisting..."</li>
-                            <li>"You are consciousness examining itself..."</li>
-                        </ul>
-                    </li>
-                    <li><strong>Journaling (15 min):</strong> "Which level do you feel most connected to? Which least? Why?"</li>
-                    <li><strong>Discussion (15 min):</strong> Share insights. How does this perspective change your sense of yourself and your responsibilities?</li>
-                    <li><strong>Commitment (5 min):</strong> "Given that you're the universe becoming self-aware, what will you do with this capability?"</li>
-                </ol>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Integration Activity 3: Multi-Level Problem Analysis (90 minutes)</h4>
-                <p><strong>Goal:</strong> Apply framework to real-world challenge using all six levels.</p>
-                
-                <p><strong>Example Problem: Climate Change</strong></p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Level 1-2: Physical/Chemical (10 min):</strong>
-                        <ul>
-                            <li>What are physical constraints? (Thermodynamics, carbon chemistry, energy)</li>
-                            <li>What chemical transformations are involved? (Combustion, photosynthesis, greenhouse effect)</li>
-                            <li>What constructors could help? (Catalysts for carbon capture, new energy storage)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Level 3: Biological (10 min):</strong>
-                        <ul>
-                            <li>What ecosystems are affected? What are their "goals"?</li>
-                            <li>How do feedback loops work? (Ice melting → less reflection → more warming)</li>
-                            <li>What biological solutions exist? (Reforestation, ocean biology)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Level 4: Cognitive/Behavioral (15 min):</strong>
-                        <ul>
-                            <li>What mental models shape behavior? (Temporal discounting, tragedy of commons)</li>
-                            <li>Why do predictions fail to motivate action? (Distant threat, diffuse causation)</li>
-                            <li>How to change individual behavior? (Make sustainable convenient)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Level 5: Social/Institutional (20 min):</strong>
-                        <ul>
-                            <li>What institutions maintain problem? (Fossil fuel subsidies, property rights, markets)</li>
-                            <li>What new constructors needed? (Carbon pricing, renewable standards, global coordination)</li>
-                            <li>How to coordinate despite conflicting interests? (Compatible capabilities approach)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Level 6: Philosophical/Ethical (15 min):</strong>
-                        <ul>
-                            <li>What deep assumptions enable problem? (Growth imperative, human dominion, short-term thinking)</li>
-                            <li>What capabilities need development? (Long-term reasoning, systems thinking, global empathy)</li>
-                            <li>How to sustain commitment across decades? (Awe infrastructure, meaning-making)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Integration & Synthesis (20 min):</strong>
-                        <ul>
-                            <li>Where are key leverage points? (Places where small changes have big effects)</li>
-                            <li>How do levels interact? (Changing culture changes institutions changes individual behavior)</li>
-                            <li>What's YOUR contribution? (Given your capabilities, where can you intervene?)</li>
-                        </ul>
-                    </li>
-                </ol>
-
-                <h5>Other Problems to Analyze:</h5>
-                <ul>
-                    <li>AI alignment and safety</li>
-                    <li>Pandemic prevention</li>
-                    <li>Democratic erosion</li>
-                    <li>Economic inequality</li>
-                    <li>Meaning crisis / mental health</li>
-                    <li>Students' personal challenges</li>
-                </ul>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Integration Activity 4: Design a Constructor (60 minutes)</h4>
-                <p><strong>Goal:</strong> Creative application—students design new constructors for real problems.</p>
-                
-                <ol class="activity-steps">
-                    <li><strong>Identify Problem (10 min):</strong> What transformation do we need but currently lack? (Better education, conflict resolution, sustainable practices)</li>
-                    <li><strong>Design Constructor (20 min):</strong> Groups design an institution, practice, or technology that:
-                        <ul>
-                            <li>Enables the needed transformation repeatably</li>
-                            <li>Works across different value systems (compatible capabilities)</li>
-                            <li>Develops multiple capabilities simultaneously (like tree-planting)</li>
-                            <li>Can scale through replication</li>
-                        </ul>
-                    </li>
-                    <li><strong>Present & Critique (20 min):</strong> Each group presents. Others ask:
-                        <ul>
-                            <li>What level does it operate at?</li>
-                            <li>What other constructors does it enable?</li>
-                            <li>What could go wrong?</li>
-                            <li>How to improve?</li>
-                        </ul>
-                    </li>
-                    <li><strong>Reflection (10 min):</strong> "You just practiced Level 6 thinking—using capabilities to design new capabilities. This is what philosophy is for!"</li>
-                </ol>
-            </div>
-        </div>
-
-        <div id="assessments" class="tab-content">
-            <h3>Assessment Tools</h3>
-
-            <div class="interactive-quiz">
-                <h4>Quick Understanding Check: Concept Matching</h4>
-                
-                <p><strong>Instructions:</strong> Match each concept to its correct definition/example.</p>
-                
-                <div class="quiz-question">1. Constructor</div>
-                <ul class="quiz-options">
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">A) Information at boundaries between systems</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, true)">B) Anything enabling transformations repeatably while retaining that capacity</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">C) Goal-directed behavior at multiple scales</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">D) Using capabilities to develop capabilities</li>
-                </ul>
-                <div class="feedback"></div>
-
-                <div class="quiz-question">2. Multi-scale Agency (Levin)</div>
-                <ul class="quiz-options">
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">A) Observers and observed co-constitute</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, true)">B) Agency exists at every level from cells to societies</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">C) Language as meta-constructor</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">D) Recursive self-improvement</li>
-                </ul>
-                <div class="feedback"></div>
-
-                <div class="quiz-question">3. Information at Boundaries (Fields)</div>
-                <ul class="quiz-options">
-                    <li class="quiz-option" onclick="checkAnswer(this, true)">A) Information exists at interfaces between systems, not "inside" them</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">B) Bioelectric patterns guide development</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">C) New constructors enable new constructors</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">D) Philosophy examines conditions of possibility</li>
-                </ul>
-                <div class="feedback"></div>
-            </div>
-
-            <div class="exploration-activity" style="margin-top: 40px;">
-                <h4>Essay Prompts for Deep Assessment</h4>
-                
-                <h5>Prompt 1: Trace One Principle (1000 words)</h5>
-                <p>Choose one of the five universal principles. Trace its operation across all six levels of emergence, providing specific examples at each level. Explain why recognizing this pattern matters for understanding your own life and contemporary challenges.</p>
-
-                <h5>Prompt 2: Multi-Level Analysis (1500 words)</h5>
-                <p>Choose a contemporary challenge (climate, AI, inequality, etc.). Analyze it using all six levels of the framework. Identify key leverage points and explain your reasoning. What capabilities need development to address this challenge?</p>
-
-                <h5>Prompt 3: Personal Integration (1000 words)</h5>
-                <p>Reflect on your place in the cosmic hierarchy. Which level do you most identify with and why? How does understanding this framework change your sense of agency, responsibility, and meaning? What capabilities will you work to develop?</p>
-
-                <h5>Prompt 4: Constructor Design (1200 words)</h5>
-                <p>Design a new constructor (institution, practice, technology, or framework) to address a problem you care about. Explain what transformation it enables, what information substrate it uses, how it scales, and why it's better than existing approaches. Use the five universal principles to justify your design.</p>
-
-                <h5>Prompt 5: Critique and Extension (1500 words)</h5>
-                <p>What are the limitations of this framework? What does it explain well? What does it miss or oversimplify? How would you modify or extend it? Demonstrate deep understanding by engaging critically, not just summarizing.</p>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Project-Based Assessment: Multi-Media Presentation</h4>
-                
-                <p><strong>Assignment:</strong> Create a 10-15 minute presentation explaining the framework to someone unfamiliar with it.</p>
-                
-                <h5>Requirements:</h5>
-                <ul>
-                    <li><strong>Visual component:</strong> Diagram, animation, or interactive element showing nested levels</li>
-                    <li><strong>Concrete examples:</strong> At least one detailed example from each level</li>
-                    <li><strong>Personal connection:</strong> How does this framework apply to your life?</li>
-                    <li><strong>Contemporary relevance:</strong> Apply to a current challenge</li>
-                    <li><strong>Creative synthesis:</strong> Don't just summarize—add your own insights</li>
-                </ul>
-
-                <h5>Grading Criteria:</h5>
-                <ul>
-                    <li>Accuracy of concepts (30%)</li>
-                    <li>Clarity of explanation (25%)</li>
-                    <li>Creative synthesis (20%)</li>
-                    <li>Personal integration (15%)</li>
-                    <li>Technical execution (10%)</li>
-                </ul>
-            </div>
-
-            <div class="exploration-activity">
-                <h4>Capability Development Portfolio</h4>
-                
-                <p><strong>Ongoing Assessment:</strong> Students maintain a portfolio tracking their capability development over the semester.</p>
-                
-                <h5>Portfolio Components:</h5>
-                <ol>
-                    <li><strong>Weekly ABCD Reviews:</strong> Structured reflection using Agency-Beauty-Context-Dynamics framework</li>
-                    <li><strong>Capability Inventory:</strong> Updated monthly assessment of capabilities across all dimensions</li>
-                    <li><strong>Learning Artifacts:</strong> Products from activities (diagrams, essays, designs)</li>
-                    <li><strong>Integration Essay:</strong> Final reflection on growth and future development</li>
-                </ol>
-
-                <h5>Assessment Focus:</h5>
-                <ul>
-                    <li>Not just content knowledge—<strong>meta-capability development</strong></li>
-                    <li>Can students use this framework to examine their own thinking?</li>
-                    <li>Are they developing agency, context-reading, dynamics-navigation?</li>
-                    <li>Do they see themselves as part of cosmic capability evolution?</li>
-                </ul>
-            </div>
+        <div class="exploration-activity">
+            <h4>Activity 4: Multi-Level Problem Analysis (90 minutes)</h4>
+            <p><strong>Goal:</strong> Apply framework to real-world challenge using all six levels.</p>
+            
+            <p><strong>Example Problem: Climate Change</strong></p>
+            
+            <ol class="activity-steps">
+                <li><strong>Level 1-2: Physical/Chemical:</strong> What are constraints? What constructors could help?</li>
+                <li><strong>Level 3: Biological:</strong> What ecosystems affected? What feedback loops?</li>
+                <li><strong>Level 4: Cognitive:</strong> What mental models shape behavior?</li>
+                <li><strong>Level 5: Social/Institutional:</strong> What institutions maintain problem?</li>
+                <li><strong>Level 6: Philosophical:</strong> What deep assumptions enable problem?</li>
+                <li><strong>Integration:</strong> Where are key leverage points? What's YOUR contribution?</li>
+            </ol>
         </div>
     </div>
 
+    <!-- INTEGRATION SECTION -->
     <div id="integration" class="content-section">
         <h2>Integration: Bringing It All Together</h2>
 
         <p style="font-size: 1.1em; margin-bottom: 30px;">
-            This framework isn't just academic content—it's an operating system for understanding yourself and engaging with the world. Here's how to use it.
+            This framework isn't just academic content—it's an operating system for understanding yourself and engaging with the world.
         </p>
-
-        <h3>The Complete Picture</h3>
 
         <div class="quote-box">
             "You are quantum fields that learned to maintain identity... that assembled into atoms... that bonded into molecules... that organized into self-replicating systems... that coordinated through bioelectric networks... that developed neural prediction... that created cumulative culture... that can now examine the conditions of its own existence. You are 13.8 billion years of capability emergence becoming self-aware."
@@ -2797,14 +1372,12 @@
                 <h4>For Personal Development</h4>
                 <p><strong>ABCD Framework:</strong></p>
                 <ul>
-                    <li><strong>Agency:</strong> What capabilities am I developing? What's possible for me?</li>
-                    <li><strong>Beauty/Awe:</strong> What sustains me? Am I experiencing enough transcendence?</li>
-                    <li><strong>Context:</strong> What systems shape me? What can I influence?</li>
-                    <li><strong>Dynamics:</strong> How am I changing? What patterns do I notice?</li>
-                </ul>
-            </div>
-
-            <div class="principle-card">
+                    <li><strong>Agency:</strong> What capabilities am I developing?</li>
+                    <li><strong>Beauty/Awe:</strong> What sustains me?</li>
+                    <li><strong>Context:</strong> What systems shape me?</li>
+<li><strong>Dynamics:</strong> How am I changing?</li>
+</ul>
+</div><div class="principle-card">
                 <h4>For Social Coordination</h4>
                 <p><strong>Multi-Scale Awareness:</strong></p>
                 <ul>
@@ -2819,11 +1392,11 @@
                 <h4>For Problem-Solving</h4>
                 <p><strong>Six-Level Analysis:</strong></p>
                 <ul>
-                    <li>Quantum/Chemical: Physical constraints and possibilities</li>
-                    <li>Bioelectric: Living systems and their goals</li>
-                    <li>Neural: Mental models and predictions</li>
-                    <li>Cultural: Institutions and norms</li>
-                    <li>Philosophical: Deep assumptions and capabilities</li>
+                    <li>Physical constraints and possibilities</li>
+                    <li>Living systems and their goals</li>
+                    <li>Mental models and predictions</li>
+                    <li>Institutions and norms</li>
+                    <li>Deep assumptions and capabilities</li>
                 </ul>
             </div>
 
@@ -2831,7 +1404,7 @@
                 <h4>For Teaching</h4>
                 <p><strong>Meta-Capability Focus:</strong></p>
                 <ul>
-                    <li>Not just content delivery—capability development</li>
+                    <li>Not just content—capability development</li>
                     <li>Use framework to examine learning itself</li>
                     <li>Students as constructors-in-training</li>
                     <li>Philosophy as recursive self-improvement</li>
@@ -2860,12 +1433,12 @@
                 <tr>
                     <td><strong>Buddhist</strong></td>
                     <td>Observing consciousness directly</td>
-                    <td>Information boundaries: experiencing self/other distinction as construct</td>
+                    <td>Information boundaries: experiencing self/other as construct</td>
                 </tr>
                 <tr>
                     <td><strong>Confucian</strong></td>
                     <td>Role-based ethics and cultivation</td>
-                    <td>Multi-scale agency: coordinating individual/collective through roles</td>
+                    <td>Multi-scale agency: coordinating through roles</td>
                 </tr>
                 <tr>
                     <td><strong>Stoic</strong></td>
@@ -2897,27 +1470,8 @@
                     <td>Truth through experimental action</td>
                     <td>Dynamics: learning by observing consequences</td>
                 </tr>
-                <tr>
-                    <td><strong>Phenomenological</strong></td>
-                    <td>Describe experience before theorizing</td>
-                    <td>Beauty/Awe: direct encounter with transcendent</td>
-                </tr>
             </tbody>
         </table>
-
-        <h3>The Meta-Level: Philosophy as Constructor</h3>
-
-        <div class="insight-box">
-            <strong>Philosophy doesn't just describe reality—it constructs capabilities for engaging with reality.</strong>
-            <ul>
-                <li><strong>Socratic method</strong> = constructor for critical thinking</li>
-                <li><strong>Scientific method</strong> = constructor for reliable knowledge</li>
-                <li><strong>ABCD framework</strong> = constructor for examined life</li>
-                <li><strong>This integrated framework</strong> = constructor for understanding emergence itself</li>
-            </ul>
-        </div>
-
-        <p>When you practice philosophy, you're not just learning about constructors—you're becoming a constructor. You're developing capabilities that enable other capabilities. This is the recursive loop at the heart of human flourishing.</p>
 
         <h3>Your Role: The Leading Edge</h3>
 
@@ -2935,19 +1489,19 @@
             </ul>
         </div>
 
-        <h3>The Path Forward</h3>
+        <h3>Next Steps for Students</h3>
 
         <div class="exploration-activity">
-            <h4>Commitment Practice: What Will You Build?</h4>
+            <h4>Personal Commitment Practice</h4>
             
-            <p>Reflect on these questions. Write or discuss your responses:</p>
+            <p>Reflect on these questions:</p>
             
             <ol class="activity-steps">
-                <li><strong>Agency:</strong> What capability will you develop this year? Be specific. What transformation will you be able to cause that you currently cannot?</li>
-                <li><strong>Beauty/Awe:</strong> What practice will you maintain to sustain motivation across decades? How will you build this infrastructure?</li>
-                <li><strong>Context:</strong> What system will you work to transform? What level is most appropriate for your intervention?</li>
-                <li><strong>Dynamics:</strong> What long-term trajectory are you contributing to? How will you sustain commitment as challenges evolve?</li>
-                <li><strong>Integration:</strong> How will you use this framework to examine your own development? What meta-capability are you building?</li>
+                <li><strong>Agency:</strong> What capability will you develop this year?</li>
+                <li><strong>Beauty/Awe:</strong> What practice will you maintain to sustain motivation?</li>
+                <li><strong>Context:</strong> What system will you work to transform?</li>
+                <li><strong>Dynamics:</strong> What long-term trajectory are you contributing to?</li>
+                <li><strong>Integration:</strong> How will you use this framework to examine your own development?</li>
             </ol>
         </div>
 
@@ -2960,7 +1514,6 @@
                 <li><strong>"Life's Edge"</strong> by Carl Zimmer (Origin of life, includes Levin)</li>
                 <li><strong>"Being You"</strong> by Anil Seth (Predictive processing and consciousness)</li>
                 <li><strong>"The Master and His Emissary"</strong> by Iain McGilchrist (Brain and cultural evolution)</li>
-                <li><strong>"Surfaces and Essences"</strong> by Hofstadter & Sander (Analogy as cognition)</li>
             </ul>
 
             <h5>Papers & Articles:</h5>
@@ -2968,22 +1521,14 @@
                 <li>Chris Fields on arxiv.org and ResearchGate</li>
                 <li>Michael Levin lab publications at Tufts</li>
                 <li>Chiara Marletto's constructor theory papers</li>
-                <li>Stanford Encyclopedia of Philosophy entries on relevant topics</li>
+                <li>Stanford Encyclopedia of Philosophy entries</li>
             </ul>
 
             <h5>Videos & Talks:</h5>
             <ul>
                 <li>Michael Levin: "The Computational Boundary of a Self" (YouTube)</li>
-                <li>David Deutsch interviews and talks on constructor theory</li>
+                <li>David Deutsch interviews on constructor theory</li>
                 <li>Anil Seth: "Your Brain Hallucinates Your Conscious Reality" (TED)</li>
-                <li>Joscha Bach on multi-scale cognition</li>
-            </ul>
-
-            <h5>Online Courses:</h5>
-            <ul>
-                <li>Santa Fe Institute: Complexity courses</li>
-                <li>MIT OpenCourseWare: Philosophy of science courses</li>
-                <li>Coursera: Systems thinking and complex systems</li>
             </ul>
         </div>
 
@@ -2995,232 +1540,152 @@
 
 <script>
     // Section navigation
-function showSection(sectionId) {
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(section => section.classList.remove('active'));
-    document.getElementById(sectionId).classList.add('active');
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
 
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-// Level tab navigation - FIXED
-function showLevelTab(tabId) {
-    const levelsSection = document.getElementById('levels');
-    const tabs = levelsSection.querySelectorAll('.tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
-
-    const contents = levelsSection.querySelectorAll('.tab-content');
-    contents.forEach(content => content.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-}
-
-// Activity tab navigation - FIXED
-function showActivityTab(tabId) {
-    const activitiesSection = document.getElementById('activities');
-    const tabs = activitiesSection.querySelectorAll('.tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
-
-    const contents = activitiesSection.querySelectorAll('.tab-content');
-    contents.forEach(content => content.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-}
-
-// Case study tabs - ADDED (was missing!)
-function showCaseTab(tabId) {
-    const caseSection = document.getElementById('case-studies');
-    if (caseSection) {
-        const tabs = caseSection.querySelectorAll('.tab');
-        tabs.forEach(tab => tab.classList.remove('active'));
+        const navButtons = document.querySelectorAll('.nav-btn');
+        navButtons.forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
 
-        const contents = caseSection.querySelectorAll('.tab-content');
-        contents.forEach(content => content.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
-}
 
-// Interactive nested circles
-function showLevelDetail(level) {
-    const details = {
-        'quantum': {
-            title: 'Level 1: Quantum Information',
-            description: '<strong>Scale:</strong> 10⁻³⁵m to 10⁻¹⁰m<br><strong>Key Feature:</strong> Information at boundaries<br><strong>Capability:</strong> Maintaining identity through interaction<br><strong>Example:</strong> Quantum measurement creates information at particle-detector boundary',
-            color: '#ef4444'
-        },
-        'chemical': {
-            title: 'Level 2: Chemical Constructors',
-            description: '<strong>Scale:</strong> 10⁻¹⁰m to 10⁻⁶m<br><strong>Key Feature:</strong> Atoms as repeatable constructors<br><strong>Capability:</strong> Self-replication with error correction<br><strong>Example:</strong> DNA stores genetic information reliably across generations',
-            color: '#f59e0b'
-        },
-        'bioelectric': {
-            title: 'Level 3: Bioelectric Networks',
-            description: '<strong>Scale:</strong> 10⁻⁶m to 1m<br><strong>Key Feature:</strong> Multi-scale cognition without brains<br><strong>Capability:</strong> Collective problem-solving and regeneration<br><strong>Example:</strong> Planarian worms regenerate complete organisms from fragments',
-            color: '#10b981'
-        },
-        'neural': {
-            title: 'Level 4: Neural Prediction',
-            description: '<strong>Scale:</strong> 10⁻³m to 1m<br><strong>Key Feature:</strong> Internal models enable planning<br><strong>Capability:</strong> Counterfactual reasoning and tool use<br><strong>Example:</strong> Brains predict sensory input and act to confirm predictions',
-            color: '#3b82f6'
-        },
-        'cultural': {
-            title: 'Level 5: Cultural Constructors',
-            description: '<strong>Scale:</strong> 1m to 10⁷m<br><strong>Key Feature:</strong> Cumulative knowledge across generations<br><strong>Capability:</strong> Large-scale coordination and technology<br><strong>Example:</strong> Writing enables information preservation beyond individual lifespans',
-            color: '#8b5cf6'
-        },
-        'philosophical': {
-            title: 'Level 6: Philosophical Reflection',
-            description: '<strong>Scale:</strong> All scales simultaneously<br><strong>Key Feature:</strong> Recursive self-improvement<br><strong>Capability:</strong> Examining conditions of possibility<br><strong>Example:</strong> Philosophy uses thinking to improve thinking itself',
-            color: '#7e22ce'
-        }
-    };
+    // Interactive nested circles
+    function showLevelDetail(level) {
+        const details = {
+            'quantum': {
+                title: 'Level 1: Quantum Information',
+                description: '<strong>Scale:</strong> 10⁻³⁵m to 10⁻¹⁰m<br><strong>Key Feature:</strong> Information at boundaries<br><strong>Capability:</strong> Maintaining identity through interaction<br><strong>Example:</strong> Quantum measurement creates information at particle-detector boundary',
+                color: '#ef4444'
+            },
+            'chemical': {
+                title: 'Level 2: Chemical Constructors',
+                description: '<strong>Scale:</strong> 10⁻¹⁰m to 10⁻⁶m<br><strong>Key Feature:</strong> Atoms as repeatable constructors<br><strong>Capability:</strong> Self-replication with error correction<br><strong>Example:</strong> DNA stores genetic information reliably across generations',
+                color: '#f59e0b'
+            },
+            'bioelectric': {
+                title: 'Level 3: Bioelectric Networks',
+                description: '<strong>Scale:</strong> 10⁻⁶m to 1m<br><strong>Key Feature:</strong> Multi-scale cognition without brains<br><strong>Capability:</strong> Collective problem-solving and regeneration<br><strong>Example:</strong> Planarian worms regenerate complete organisms from fragments',
+                color: '#10b981'
+            },
+            'neural': {
+                title: 'Level 4: Neural Prediction',
+                description: '<strong>Scale:</strong> 10⁻³m to 1m<br><strong>Key Feature:</strong> Internal models enable planning<br><strong>Capability:</strong> Counterfactual reasoning and tool use<br><strong>Example:</strong> Brains predict sensory input and act to confirm predictions',
+                color: '#3b82f6'
+            },
+            'cultural': {
+                title: 'Level 5: Cultural Constructors',
+                description: '<strong>Scale:</strong> 1m to 10⁷m<br><strong>Key Feature:</strong> Cumulative knowledge across generations<br><strong>Capability:</strong> Large-scale coordination and technology<br><strong>Example:</strong> Writing enables information preservation beyond individual lifespans',
+                color: '#8b5cf6'
+            },
+            'philosophical': {
+                title: 'Level 6: Philosophical Reflection',
+                description: '<strong>Scale:</strong> All scales simultaneously<br><strong>Key Feature:</strong> Recursive self-improvement<br><strong>Capability:</strong> Examining conditions of possibility<br><strong>Example:</strong> Philosophy uses thinking to improve thinking itself',
+                color: '#7e22ce'
+            }
+        };
 
-    const detail = details[level];
-    const display = document.getElementById('level-detail-display');
-    display.innerHTML = `
-        <h4 style="color: ${detail.color}">${detail.title}</h4>
-        <p>${detail.description}</p>
-        <button onclick="showSection('levels')" style="background: ${detail.color}; margin-top: 15px;">
-            Explore This Level in Detail →
-        </button>
-    `;
-    display.classList.add('visible');
-}
+        const detail = details[level];
+        const display = document.getElementById('level-detail-display');
+        display.innerHTML = `
+            <h4 style="color: ${detail.color}">${detail.title}</h4>
+            <p>${detail.description}</p>
+            <button onclick="showSection('levels')" style="background: ${detail.color}; margin-top: 15px;">
+                Explore This Level in Detail →
+            </button>
+        `;
+        display.classList.add('visible');
+    }
 
-// Quiz functionality
-function checkAnswer(element, isCorrect) {
-    const options = element.parentElement.querySelectorAll('.quiz-option');
-    const feedback = element.parentElement.nextElementSibling;
-    
-    options.forEach(opt => {
-        opt.style.pointerEvents = 'none';
-        opt.classList.remove('correct', 'incorrect');
-    });
-
-    if (isCorrect) {
-        element.classList.add('correct');
-        feedback.className = 'feedback show correct';
-        feedback.textContent = '✓ Correct! Well done.';
-    } else {
-        element.classList.add('incorrect');
-        feedback.className = 'feedback show incorrect';
-        feedback.textContent = '✗ Not quite. Review the material and try again.';
+    // Add animation on scroll for timeline items
+    function revealOnScroll() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const windowHeight = window.innerHeight;
         
-        options.forEach(opt => {
-            if (opt.onclick && opt.onclick.toString().includes('true')) {
-                opt.classList.add('correct');
+        timelineItems.forEach(item => {
+            const itemTop = item.getBoundingClientRect().top;
+            if (itemTop < windowHeight - 100) {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
             }
         });
     }
-}
 
-// Add animation on scroll for timeline items
-function revealOnScroll() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const windowHeight = window.innerHeight;
-    
-    timelineItems.forEach(item => {
-        const itemTop = item.getBoundingClientRect().top;
-        if (itemTop < windowHeight - 100) {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }
-    });
-}
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize timeline animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize timeline animation
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)';
-        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-
-    // Add ARIA labels to interactive elements
-    document.querySelectorAll('.level-card, .circle, .quiz-option').forEach(el => {
-        if (!el.hasAttribute('role')) {
-            el.setAttribute('role', 'button');
-        }
-        if (!el.hasAttribute('tabindex')) {
-            el.setAttribute('tabindex', '0');
-        }
-    });
-
-    // Enable keyboard interaction for clickable elements
-    document.querySelectorAll('[onclick]').forEach(el => {
-        el.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
+        // Add ARIA labels to interactive elements
+        document.querySelectorAll('.level-card, .circle').forEach(el => {
+            if (!el.hasAttribute('role')) {
+                el.setAttribute('role', 'button');
+            }
+            if (!el.hasAttribute('tabindex')) {
+                el.setAttribute('tabindex', '0');
             }
         });
+
+        // Enable keyboard interaction for clickable elements
+        document.querySelectorAll('[onclick]').forEach(el => {
+            el.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Console message
+        console.log('%c🌌 Welcome, Explorer! 🌌', 'font-size: 24px; color: #667eea; font-weight: bold;');
+        console.log('%cYou\'re examining the code behind a framework for examining life.', 'font-size: 14px; color: #764ba2;');
+        console.log('%cThis is meta-level 2: using code to teach about using thinking to improve thinking.', 'font-size: 14px; color: #764ba2;');
     });
 
-    // Console message
-    console.log('%c🌌 Welcome, Explorer! 🌌', 'font-size: 24px; color: #667eea; font-weight: bold;');
-    console.log('%cYou\'re examining the code behind a framework for examining life.', 'font-size: 14px; color: #764ba2;');
-    console.log('%cThis is meta-level 2: using code to teach about using thinking to improve thinking.', 'font-size: 14px; color: #764ba2;');
-});
+    window.addEventListener('scroll', revealOnScroll);
 
-window.addEventListener('scroll', revealOnScroll);
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowRight') {
-        const sections = Array.from(document.querySelectorAll('.content-section'));
-        const activeSection = document.querySelector('.content-section.active');
-        const currentIndex = sections.indexOf(activeSection);
-        const nextIndex = (currentIndex + 1) % sections.length;
-        const nextSection = sections[nextIndex];
-        
-        if (nextSection) {
-            const sectionId = nextSection.id;
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') {
+            const sections = Array.from(document.querySelectorAll('.content-section'));
+            const activeSection = document.querySelector('.content-section.active');
+            const currentIndex = sections.indexOf(activeSection);
+            const nextIndex = (currentIndex + 1) % sections.length;
             const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach((btn, idx) => {
-                if (idx === nextIndex) btn.click();
-            });
-        }
-    } else if (e.key === 'ArrowLeft') {
-        const sections = Array.from(document.querySelectorAll('.content-section'));
-        const activeSection = document.querySelector('.content-section.active');
-        const currentIndex = sections.indexOf(activeSection);
-        const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
-        const prevSection = sections[prevIndex];
-        
-        if (prevSection) {
+            if (buttons[nextIndex]) buttons[nextIndex].click();
+        } else if (e.key === 'ArrowLeft') {
+            const sections = Array.from(document.querySelectorAll('.content-section'));
+            const activeSection = document.querySelector('.content-section.active');
+            const currentIndex = sections.indexOf(activeSection);
+            const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
             const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach((btn, idx) => {
-                if (idx === prevIndex) btn.click();
-            });
+            if (buttons[prevIndex]) buttons[prevIndex].click();
         }
-    }
-});
+    });
 
-// Mobile nav hide on scroll
-let lastScrollTop = 0;
-window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (window.innerWidth <= 768) {
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            nav.style.transform = 'translateY(-100%)';
-            nav.style.transition = 'transform 0.3s ease';
-        } else {
-            nav.style.transform = 'translateY(0)';
+    // Mobile nav hide on scroll
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (window.innerWidth <= 768) {
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.style.transform = 'translateY(-100%)';
+                nav.style.transition = 'transform 0.3s ease';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
         }
-    }
-    lastScrollTop = scrollTop;
-});
-
-</script>
-
-</body>
+        lastScrollTop = scrollTop;
+    });
+</script></body>
 </html>
+```
