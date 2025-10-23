@@ -60,6 +60,9 @@
             flex-wrap: wrap;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             justify-content: center;
+            position: sticky; /* Makes nav sticky */
+            top: 10px;      /* Sticks it 10px from the top */
+            z-index: 1000;  /* Ensures it's above other content */
         }
 
         .nav-btn {
@@ -238,6 +241,16 @@
             position: relative;
             margin-bottom: 50px;
             width: 45%;
+            /* Styles for animation added here */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        /* New class to trigger animation */
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .timeline-item:nth-child(odd) {
@@ -640,11 +653,13 @@
         .quiz-option.correct {
             background: #d1fae5;
             border-color: #10b981;
+            font-weight: bold;
         }
 
         .quiz-option.incorrect {
             background: #fee2e2;
             border-color: #ef4444;
+            opacity: 0.7;
         }
 
         .feedback {
@@ -714,6 +729,7 @@
 
             nav {
                 flex-direction: column;
+                position: static; /* Remove sticky on mobile */
             }
 
             .nav-btn {
@@ -795,7 +811,6 @@
             <button class="nav-btn" onclick="showSection('integration')">Integration</button>
         </nav>
 
-        <!-- OVERVIEW SECTION -->
         <div id="overview" class="content-section active">
             <h2>The Grand Narrative: From Quantum Fields to Philosophical Reflection</h2>
             
@@ -880,17 +895,16 @@
                     <li>Their choices matter because they're <strong>steering the next phase ofemergence</strong></li>
 </ul>
 </div><div class="info-box">
-            <strong>Pedagogical Approach:</strong> This framework integrates seamlessly with the ABCD capability development model:
-            <ul>
-                <li><strong>Agency (A):</strong> Understanding capability at each scale</li>
-                <li><strong>Beauty/Awe (B):</strong> Connecting to larger scales provides perspective</li>
-                <li><strong>Context (C):</strong> Recognizing nested systems from quantum to cultural</li>
-                <li><strong>Dynamics (D):</strong> Navigating transformation across all levels</li>
-            </ul>
-        </div>
+                <strong>Pedagogical Approach:</strong> This framework integrates seamlessly with the ABCD capability development model:
+                <ul>
+                    <li><strong>Agency (A):</strong> Understanding capability at each scale</li>
+                    <li><strong>Beauty/Awe (B):</strong> Connecting to larger scales provides perspective</li>
+                    <li><strong>Context (C):</strong> Recognizing nested systems from quantum to cultural</li>
+                    <li><strong>Dynamics (D):</strong> Navigating transformation across all levels</li>
+                </ul>
+            </div>
     </div>
 
-    <!-- SIX LEVELS SECTION -->
     <div id="levels" class="content-section">
         <h2>The Six Levels of Capability Emergence</h2>
         
@@ -907,7 +921,6 @@
             <button class="tab" onclick="showLevelTab('level6-tab')">Level 6: Philosophical</button>
         </div>
 
-        <!-- Level 1: Quantum -->
         <div id="level1-tab" class="tab-content active">
             <h3>Level 1: Quantum Information Architecture</h3>
             
@@ -961,7 +974,6 @@
             </div>
         </div>
 
-        <!-- Level 2: Chemical -->
         <div id="level2-tab" class="tab-content">
             <h3>Level 2: Constructor Assembly</h3>
             
@@ -1089,7 +1101,6 @@
             </div>
         </div>
 
-        <!-- Level 3: Bioelectric -->
         <div id="level3-tab" class="tab-content">
             <h3>Level 3: Bioelectric Networks & Multi-Scale Agency</h3>
             
@@ -1219,7 +1230,6 @@
             </div>
         </div>
 
-        <!-- Level 4: Neural -->
         <div id="level4-tab" class="tab-content">
             <h3>Level 4: Neural Networks & Predictive Processing</h3>
             
@@ -1349,7 +1359,6 @@
             </div>
         </div>
 
-        <!-- Level 5: Cultural -->
         <div id="level5-tab" class="tab-content">
             <h3>Level 5: Cultural & Linguistic Constructors</h3>
             
@@ -1564,7 +1573,6 @@
             </div>
         </div>
 
-        <!-- Level 6: Philosophical -->
         <div id="level6-tab" class="tab-content">
             <h3>Level 6: Philosophical Self-Understanding</h3>
             
@@ -1791,7 +1799,6 @@
         </div>
     </div>
 
-    <!-- KEY SCIENTISTS SECTION -->
     <div id="scientists" class="content-section">
         <h2>Key Scientists & Their Contributions</h2>
 
@@ -1927,7 +1934,6 @@
         </div>
     </div>
 
-    <!-- UNIVERSAL PRINCIPLES SECTION -->
     <div id="principles" class="content-section">
         <h2>Five Universal Principles Across All Levels</h2>
 
@@ -2027,47 +2033,47 @@
             <div class="timeline-container">
                 <div class="timeline-line"></div>
                 <div class="timeline-item"><div class="timeline-content">
-                            <h5>Atoms → Molecules</h5>
-                            <p>Atoms as constructors enable chemical bonds → Molecules become possible</p>
-                        </div>
+                        <h5>Atoms → Molecules</h5>
+                        <p>Atoms as constructors enable chemical bonds → Molecules become possible</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h5>Molecules → Autocatalysis</h5>
-                            <p>Catalytic molecules enable self-replication → Life becomes possible</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5>Molecules → Autocatalysis</h5>
+                        <p>Catalytic molecules enable self-replication → Life becomes possible</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h5>DNA → Complex Organisms</h5>
-                            <p>Reliable information storage enables evolution → Multicellular life becomes possible</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5>DNA → Complex Organisms</h5>
+                        <p>Reliable information storage enables evolution → Multicellular life becomes possible</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h5>Nervous Systems → Planning</h5>
-                            <p>Internal models enable simulation → Flexible behavior becomes possible</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5>Nervous Systems → Planning</h5>
+                        <p>Internal models enable simulation → Flexible behavior becomes possible</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h5>Language → Cumulative Culture</h5>
-                            <p>Symbolic communication enables knowledge transmission → Civilization becomes possible</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5>Language → Cumulative Culture</h5>
+                        <p>Symbolic communication enables knowledge transmission → Civilization becomes possible</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h5>Writing → Complex Institutions</h5>
-                            <p>External memory enables large-scale coordination → Empires, science become possible</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5>Writing → Complex Institutions</h5>
+                        <p>External memory enables large-scale coordination → Empires, science become possible</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h5>Philosophy → Recursive Self-Improvement</h5>
-                            <p>Meta-capability development enables examining conditions of thought → Wisdom becomes possible</p>
-                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h5>Philosophy → Recursive Self-Improvement</h5>
+                        <p>Meta-capability development enables examining conditions of thought → Wisdom becomes possible</p>
                     </div>
-                </div><div class="key-concept">
+                </div>
+            </div><div class="key-concept">
                 <strong>Implication:</strong> You inherit billions of years of constructor accumulation. Every tool you use—language, mathematics, scientific method, democratic processes—is a constructor built by previous generations. Your job is to use them well and build new ones for the next generation.
             </div>
         </div>
@@ -2149,7 +2155,6 @@
         </div>
     </div>
 
-    <!-- COSMIC TIMELINE SECTION -->
     <div id="timeline" class="content-section">
         <h2>Cosmic Timeline: 13.8 Billion Years of Capability Emergence</h2>
 
@@ -2395,7 +2400,6 @@
         </div>
     </div>
 
-    <!-- TEACHING ACTIVITIES SECTION -->
     <div id="activities" class="content-section">
         <h2>Teaching Activities & Assessment Tools</h2>
 
@@ -2410,7 +2414,6 @@
             <button class="tab" onclick="showActivityTab('assessments')">Assessments</button>
         </div>
 
-        <!-- Introduction Activities -->
         <div id="intro-activities" class="tab-content active">
             <h3>Activities for Introducing the Framework</h3>
 
@@ -2472,7 +2475,6 @@
             </div>
         </div>
 
-        <!-- Level-Specific Activities -->
         <div id="level-activities" class="tab-content">
             <h3>Deep-Dive Activities for Each Level</h3>
 
@@ -2544,9 +2546,9 @@
             </div>
         </div>
 
-        <!-- Integration Activities -->
-        <div id="integration-activities"class="tab-content">
-<h3>Activities Connecting All Levels</h3><div class="exploration-activity">
+        <div id="integration-activities" class="tab-content">
+            <h3>Activities Connecting All Levels</h3>
+            <div class="exploration-activity">
                 <h4>Integration Activity 1: Trace One Principle Across All Scales (60 minutes)</h4>
                 <p><strong>Goal:</strong> Show how the same principle operates from quantum to philosophical level.</p>
                 
@@ -2679,7 +2681,6 @@
             </div>
         </div>
 
-        <!-- Assessments -->
         <div id="assessments" class="tab-content">
             <h3>Assessment Tools</h3>
 
@@ -2690,28 +2691,28 @@
                 
                 <div class="quiz-question">1. Constructor</div>
                 <ul class="quiz-options">
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">A) Information at boundaries between systems</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, true)">B) Anything enabling transformations repeatably while retaining that capacity</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">C) Goal-directed behavior at multiple scales</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">D) Using capabilities to develop capabilities</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">A) Information at boundaries between systems</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="true">B) Anything enabling transformations repeatably while retaining that capacity</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">C) Goal-directed behavior at multiple scales</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">D) Using capabilities to develop capabilities</li>
                 </ul>
                 <div class="feedback"></div>
 
                 <div class="quiz-question">2. Multi-scale Agency (Levin)</div>
                 <ul class="quiz-options">
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">A) Observers and observed co-constitute</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, true)">B) Agency exists at every level from cells to societies</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">C) Language as meta-constructor</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">D) Recursive self-improvement</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">A) Observers and observed co-constitute</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="true">B) Agency exists at every level from cells to societies</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">C) Language as meta-constructor</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">D) Recursive self-improvement</li>
                 </ul>
                 <div class="feedback"></div>
 
                 <div class="quiz-question">3. Information at Boundaries (Fields)</div>
                 <ul class="quiz-options">
-                    <li class="quiz-option" onclick="checkAnswer(this, true)">A) Information exists at interfaces between systems, not "inside" them</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">B) Bioelectric patterns guide development</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">C) New constructors enable new constructors</li>
-                    <li class="quiz-option" onclick="checkAnswer(this, false)">D) Philosophy examines conditions of possibility</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="true">A) Information exists at interfaces between systems, not "inside" them</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">B) Bioelectric patterns guide development</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">C) New constructors enable new constructors</li>
+                    <li class="quiz-option" onclick="checkAnswer(this)" data-correct="false">D) Philosophy examines conditions of possibility</li>
                 </ul>
                 <div class="feedback"></div>
             </div>
@@ -2783,7 +2784,6 @@
         </div>
     </div>
 
-    <!-- INTEGRATION SECTION -->
     <div id="integration" class="content-section">
         <h2>Integration: Bringing It All Together</h2>
 
@@ -3076,55 +3076,49 @@
         display.innerHTML = `
             <h4 style="color: ${detail.color}">${detail.title}</h4>
             <p>${detail.description}</p>
-            <button onclick="showSection('levels')" style="background: ${detail.color}; margin-top: 15px;">
+            <button onclick="showSection('levels'); showLevelTab('level${Object.keys(details).indexOf(level) + 1}-tab');" style="background: ${detail.color}; margin-top: 15px;">
                 Explore This Level in Detail →
             </button>
         `;
+        // Modified the button to not only go to the 'levels' section
+        // but also open the corresponding tab.
         display.classList.add('visible');
     }
 
-    // Quiz functionality
-    function checkAnswer(element, isCorrect) {
-        const options = element.parentElement.querySelectorAll('.quiz-option');
-        const feedback = element.parentElement.nextElementSibling;
+    // **** FIX 2: Rewritten quiz functionality ****
+    function checkAnswer(element) {
+        const isCorrect = element.dataset.correct === 'true';
+        const parentList = element.parentElement;
+        const options = parentList.querySelectorAll('.quiz-option');
+        const feedback = parentList.nextElementSibling;
         
+        // Disable all options for this question
         options.forEach(opt => {
             opt.style.pointerEvents = 'none';
             opt.classList.remove('correct', 'incorrect');
+            
+            // Always highlight the correct answer
+            if (opt.dataset.correct === 'true') {
+                opt.classList.add('correct');
+            }
         });
 
         if (isCorrect) {
-            element.classList.add('correct');
+            // The clicked one was already highlighted as correct
             feedback.className = 'feedback show correct';
             feedback.textContent = '✓ Correct! Well done.';
         } else {
+            // Highlight the one they clicked as incorrect
             element.classList.add('incorrect');
             feedback.className = 'feedback show incorrect';
-            feedback.textContent = '✗ Not quite. Review the material and try again.';
-            
-            // Show correct answer
-            options.forEach(opt => {
-                if (opt.onclick.toString().includes('true')) {
-                    opt.classList.add('correct');
-                }
-            });
+            feedback.textContent = '✗ Not quite. The correct answer is highlighted in green.';
         }
     }
 
-    // Smooth scrolling for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-const target = document.querySelector(this.getAttribute('href'));
-if (target) {
-target.scrollIntoView({
-behavior: 'smooth',
-block: 'start'
-});
-}
-});
-});
-// Add animation on scroll for timeline items
+    // **** FIX 3: Removed dead 'smooth scrolling' code ****
+
+    // **** FIX 5: Modified timeline animation ****
+    // Add animation on scroll for timeline items
     function revealOnScroll() {
         const timelineItems = document.querySelectorAll('.timeline-item');
         const windowHeight = window.innerHeight;
@@ -3132,31 +3126,23 @@ block: 'start'
         timelineItems.forEach(item => {
             const itemTop = item.getBoundingClientRect().top;
             if (itemTop < windowHeight - 100) {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
+                // Add 'visible' class instead of changing styles directly
+                item.classList.add('visible');
             }
         });
     }
 
-    // Initialize timeline animation
-    document.addEventListener('DOMContentLoaded', function() {
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        timelineItems.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-    });
+    // **** FIX 5: Removed DOMContentLoaded style injection ****
 
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); // Check on load
 
-    // Print functionality
+    // Print functionality (kept)
     function printContent() {
         window.print();
     }
 
-    // Add keyboard navigation
+    // Add keyboard navigation (kept)
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowRight') {
             const activeSection = document.querySelector('.content-section.active');
@@ -3177,21 +3163,26 @@ block: 'start'
         }
     });
 
-    // Mobile menu toggle helper
+    // Mobile menu toggle helper (kept, but improved nav CSS)
     let lastScrollTop = 0;
     window.addEventListener('scroll', function() {
         const nav = document.querySelector('nav');
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            nav.style.transform = 'translateY(-100%)';
+        // Only apply this logic if not in mobile view (where nav is static)
+        if (window.innerWidth > 768) {
+            if (scrollTop > lastScrollTop && scrollTop > 150) { // Start hiding after 150px
+                nav.style.transform = 'translateY(-110%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
         } else {
-            nav.style.transform = 'translateY(0)';
+             nav.style.transform = 'none'; // Ensure it's visible on mobile
         }
         lastScrollTop = scrollTop;
     });
 
-    // Add progress indicator
+    // Add progress indicator (kept)
     function updateProgressIndicator() {
         const sections = document.querySelectorAll('.content-section');
         const currentSection = document.querySelector('.content-section.active');
@@ -3201,8 +3192,16 @@ block: 'start'
         // You can add a progress bar here if desired
         console.log(`Progress: ${progress.toFixed(0)}%`);
     }
+    
+    // Call it when section changes
+    const originalShowSection = showSection;
+    showSection = function(sectionId) {
+        originalShowSection(sectionId);
+        updateProgressIndicator();
+    }
 
-    // Easter egg: Konami code activates special message
+
+    // Easter egg: Konami code (kept)
     let konamiCode = [];
     const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     
@@ -3231,7 +3230,7 @@ block: 'start'
         }
     });
 
-    // Accessibility improvements
+    // Accessibility improvements (kept)
     document.addEventListener('DOMContentLoaded', function() {
         // Add ARIA labels to interactive elements
         document.querySelectorAll('.level-card, .circle, .quiz-option').forEach(el => {
@@ -3254,23 +3253,14 @@ block: 'start'
         });
     });
 
-    // Dark mode toggle (optional enhancement)
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    }
+    // **** FIX 4: Removed dead 'dark mode' code ****
 
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-    }
-
-    // Console message for curious students
+    // Console message for curious students (kept)
     console.log('%c🌌 Welcome, Explorer! 🌌', 'font-size: 24px; color: #667eea; font-weight: bold;');
     console.log('%cYou\'re examining the code behind a framework for examining life.', 'font-size: 14px; color: #764ba2;');
     console.log('%cThis is meta-level 2: using code to teach about using thinking to improve thinking.', 'font-size: 14px; color: #764ba2;');
     console.log('%cKeep exploring. The universe rewards curiosity.', 'font-size: 14px; color: #667eea; font-style: italic;');
     console.log('%c\nTry the Konami code for a surprise! ↑↑↓↓←→←→BA', 'font-size: 12px; color: #999;');
-</script></body>
+</script>
+</body>
 </html>
-```
