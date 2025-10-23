@@ -282,78 +282,74 @@
 
         .nested-circles {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            position: relative;
-            height: 600px;
+            align-items: stretch;
+            gap: 20px;
             margin: 30px 0;
+            padding: 20px;
         }
 
         .circle {
-            position: absolute;
-            border-radius: 50%;
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transition: all 0.4s ease;
             border: 3px solid;
-            background: rgba(255, 255, 255, 0.9);
+            min-height: 120px;
+            flex: 1 1 300px;
+            max-width: 400px;
+            padding: 20px;
         }
 
         .circle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             z-index: 10;
         }
 
         .circle-label {
             font-weight: 700;
             text-align: center;
-            padding: 10px;
-            font-size: 0.95em;
+            font-size: 1.1em;
         }
 
         #circle-quantum {
-            width: 80px;
-            height: 80px;
             border-color: #ef4444;
             color: #ef4444;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
         }
 
         #circle-chemical {
-            width: 160px;
-            height: 160px;
             border-color: #f59e0b;
             color: #f59e0b;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
         }
 
         #circle-bioelectric {
-            width: 260px;
-            height: 260px;
             border-color: #10b981;
             color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
         }
 
         #circle-neural {
-            width: 370px;
-            height: 370px;
             border-color: #3b82f6;
             color: #3b82f6;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
         }
 
         #circle-cultural {
-            width: 490px;
-            height: 490px;
             border-color: #8b5cf6;
             color: #8b5cf6;
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
         }
 
         #circle-philosophical {
-            width: 600px;
-            height: 600px;
             border-color: #7e22ce;
             color: #7e22ce;
+            background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 100%);
         }
 
         .info-box {
@@ -674,19 +670,16 @@
             }
 
             .nested-circles {
-                height: 400px;
+                flex-direction: column;
+                padding: 10px;
             }
 
             .circle {
-                font-size: 0.8em;
+                width: 100%;
+                max-width: 100%;
+                min-height: 100px;
+                font-size: 0.9em;
             }
-
-            #circle-philosophical { width: 380px; height: 380px; }
-            #circle-cultural { width: 310px; height: 310px; }
-            #circle-neural { width: 240px; height: 240px; }
-            #circle-bioelectric { width: 170px; height: 170px; }
-            #circle-chemical { width: 110px; height: 110px; }
-            #circle-quantum { width: 60px; height: 60px; }
 
             nav {
                 flex-direction: column;
@@ -764,53 +757,54 @@
             <h3>The Six Levels of Emergence</h3>
 
             <div class="interactive-diagram">
-    <h4 style="text-align: center; margin-bottom: 30px; color: #1e3c72;">Click any level to explore</h4>
-    <div class="nested-circles">
-        <div class="circle" id="circle-quantum" onclick="showLevelDetail('quantum')" role="button" tabindex="0">
-            <span class="circle-label">
-                <strong>Level 1: Quantum</strong><br>
-                Information at Boundaries
-            </span>
-        </div>
-        
-        <div class="circle" id="circle-chemical" onclick="showLevelDetail('chemical')" role="button" tabindex="0">
-            <span class="circle-label">
-                <strong>Level 2: Chemical</strong><br>
-                Constructor Assembly
-            </span>
-        </div>
-        
-        <div class="circle" id="circle-bioelectric" onclick="showLevelDetail('bioelectric')" role="button" tabindex="0">
-            <span class="circle-label">
-                <strong>Level 3: Bioelectric</strong><br>
-                Multi-Scale Cognition
-            </span>
-        </div>
-        
-        <div class="circle" id="circle-neural" onclick="showLevelDetail('neural')" role="button" tabindex="0">
-            <span class="circle-label">
-                <strong>Level 4: Neural</strong><br>
-                Predictive Processing
-            </span>
-        </div>
-        
-        <div class="circle" id="circle-cultural" onclick="showLevelDetail('cultural')" role="button" tabindex="0">
-            <span class="circle-label">
-                <strong>Level 5: Cultural</strong><br>
-                Cumulative Knowledge
-            </span>
-        </div>
-        
-        <div class="circle" id="circle-philosophical" onclick="showLevelDetail('philosophical')" role="button" tabindex="0">
-            <span class="circle-label">
-                <strong>Level 6: Philosophical</strong><br>
-                Recursive Self-Improvement
-            </span>
-        </div>
-    </div>
-    
-    <div id="level-detail-display" class="level-detail"></div>
-</div>
+                <h4 style="text-align: center; margin-bottom: 30px; color: #1e3c72;">Click any level to explore</h4>
+                <div class="nested-circles">
+                    <div class="circle" id="circle-quantum" onclick="showLevelDetail('quantum')" role="button" tabindex="0">
+                        <span class="circle-label">
+                            <strong>Level 1: Quantum</strong><br>
+                            Information at Boundaries
+                        </span>
+                    </div>
+                    
+                    <div class="circle" id="circle-chemical" onclick="showLevelDetail('chemical')" role="button" tabindex="0">
+                        <span class="circle-label">
+                            <strong>Level 2: Chemical</strong><br>
+                            Constructor Assembly
+                        </span>
+                    </div>
+                    
+                    <div class="circle" id="circle-bioelectric" onclick="showLevelDetail('bioelectric')" role="button" tabindex="0">
+                        <span class="circle-label">
+                            <strong>Level 3: Bioelectric</strong><br>
+                            Multi-Scale Cognition
+                        </span>
+                    </div>
+                    
+                    <div class="circle" id="circle-neural" onclick="showLevelDetail('neural')" role="button" tabindex="0">
+                        <span class="circle-label">
+                            <strong>Level 4: Neural</strong><br>
+                            Predictive Processing
+                        </span>
+                    </div>
+                    
+                    <div class="circle" id="circle-cultural" onclick="showLevelDetail('cultural')" role="button" tabindex="0">
+                        <span class="circle-label">
+                            <strong>Level 5: Cultural</strong><br>
+                            Cumulative Knowledge
+                        </span>
+                    </div>
+                    
+                    <div class="circle" id="circle-philosophical" onclick="showLevelDetail('philosophical')" role="button" tabindex="0">
+                        <span class="circle-label">
+                            <strong>Level 6: Philosophical</strong><br>
+                            Recursive Self-Improvement
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="level-detail-display" class="level-detail"></div>
+            </div>
+
             <h3>Why This Matters for Education</h3>
 
             <div class="principle-box">
@@ -845,8 +839,7 @@
             <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th>Level</th>
-                        <th>Scale</th>
+                        <th>Level</th><th>Scale</th>
                         <th>Key Feature</th>
                         <th>Information Substrate</th>
                         <th>Primary Capability</th>
@@ -863,7 +856,8 @@
                     <tr>
                         <td><strong>2. Chemical</strong></td>
                         <td>10⁻¹⁰m</td>
-                        <td>Constructor assembly</td><td>Molecular bonds</td>
+                        <td>Constructor assembly</td>
+                        <td>Molecular bonds</td>
                         <td>Self-replication with error correction</td>
                     </tr>
                     <tr>
@@ -1384,10 +1378,8 @@
         </p>
 
         <div class="quote-box">
-            "You are quantum fields that learned to maintain identity... that assembled into atoms... that bonded into molecules... that organized into self-replicating systems... that coordinated through bioelectric networks... that developed neural prediction... that created cumulative culture... that can now examine the conditions of its own existence. You are 13.8 billion years of capability emergence becoming self-aware."
-        </div>
-
-        <h3>Practical Applications</h3>
+            "You are quantum fields that learned to maintain identity... that assembled into atoms... thatbonded into molecules... that organized into self-replicating systems... that coordinated through bioelectric networks... that developed neural prediction... that created cumulative culture... that can now examine the conditions of its own existence. You are 13.8 billion years of capability emergence becoming self-aware."
+</div><h3>Practical Applications</h3>
 
         <div class="principle-grid">
             <div class="principle-card">
@@ -1397,9 +1389,11 @@
                     <li><strong>Agency:</strong> What capabilities am I developing?</li>
                     <li><strong>Beauty/Awe:</strong> What sustains me?</li>
                     <li><strong>Context:</strong> What systems shape me?</li>
-<li><strong>Dynamics:</strong> How am I changing?</li>
-</ul>
-</div><div class="principle-card">
+                    <li><strong>Dynamics:</strong> How am I changing?</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
                 <h4>For Social Coordination</h4>
                 <p><strong>Multi-Scale Awareness:</strong></p>
                 <ul>
@@ -1574,78 +1568,39 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Interactive.nested-circles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 30px 0;
-    padding: 20px;
-}
-
-.circle {
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    border: 3px solid;
-    background: rgba(255, 255, 255, 0.9);
-    min-height: 120px;
-    flex: 1 1 300px;
-    max-width: 400px;
-    padding: 20px;
-}
-
-.circle:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-}
-
-.circle-label {
-    font-weight: 700;
-    text-align: center;
-    font-size: 1.1em;
-}
-
-#circle-quantum {
-    border-color: #ef4444;
-    color: #ef4444;
-    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-}
-
-#circle-chemical {
-    border-color: #f59e0b;
-    color: #f59e0b;
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-}
-
-#circle-bioelectric {
-    border-color: #10b981;
-    color: #10b981;
-    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-}
-
-#circle-neural {
-    border-color: #3b82f6;
-    color: #3b82f6;
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-}
-
-#circle-cultural {
-    border-color: #8b5cf6;
-    color: #8b5cf6;
-    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
-}
-
-#circle-philosophical {
-    border-color: #7e22ce;
-    color: #7e22ce;
-    background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 100%);
-}
+    // Interactive nested circles
+    function showLevelDetail(level) {
+        const details = {
+            'quantum': {
+                title: 'Level 1: Quantum Information',
+                description: '<strong>Scale:</strong> 10⁻³⁵m to 10⁻¹⁰m<br><strong>Key Feature:</strong> Information at boundaries<br><strong>Capability:</strong> Maintaining identity through interaction<br><strong>Example:</strong> Quantum measurement creates information at particle-detector boundary',
+                color: '#ef4444'
+            },
+            'chemical': {
+                title: 'Level 2: Chemical Constructors',
+                description: '<strong>Scale:</strong> 10⁻¹⁰m to 10⁻⁶m<br><strong>Key Feature:</strong> Atoms as repeatable constructors<br><strong>Capability:</strong> Self-replication with error correction<br><strong>Example:</strong> DNA stores genetic information reliably across generations',
+                color: '#f59e0b'
+            },
+            'bioelectric': {
+                title: 'Level 3: Bioelectric Networks',
+                description: '<strong>Scale:</strong> 10⁻⁶m to 1m<br><strong>Key Feature:</strong> Multi-scale cognition without brains<br><strong>Capability:</strong> Collective problem-solving and regeneration<br><strong>Example:</strong> Planarian worms regenerate complete organisms from fragments',
+                color: '#10b981'
+            },
+            'neural': {
+                title: 'Level 4: Neural Prediction',
+                description: '<strong>Scale:</strong> 10⁻³m to 1m<br><strong>Key Feature:</strong> Internal models enable planning<br><strong>Capability:</strong> Counterfactual reasoning and tool use<br><strong>Example:</strong> Brains predict sensory input and act to confirm predictions',
+                color: '#3b82f6'
+            },
+            'cultural': {
+                title: 'Level 5: Cultural Constructors',
+                description: '<strong>Scale:</strong> 1m to 10⁷m<br><strong>Key Feature:</strong> Cumulative knowledge across generations<br><strong>Capability:</strong> Large-scale coordination and technology<br><strong>Example:</strong> Writing enables information preservation beyond individual lifespans',
+                color: '#8b5cf6'
+            },
+            'philosophical': {
+                title: 'Level 6: Philosophical Reflection',
+                description: '<strong>Scale:</strong> All scales simultaneously<br><strong>Key Feature:</strong> Recursive self-improvement<br><strong>Capability:</strong> Examining conditions of possibility<br><strong>Example:</strong> Philosophy uses thinking to improve thinking itself',
+                color: '#7e22ce'
+            }
         };
 
         const detail = details[level];
